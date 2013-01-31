@@ -6,11 +6,10 @@ class TaxonomyTerm extends DataObject {
 	);
 
 	static $has_many = array(
-		'Terms' => 'TaxonomyTerm'
+		'Children' => 'TaxonomyTerm'
 	);
 
 	static $has_one = array(
 		'Parent' => 'TaxonomyTerm',
-		'Taxonomy' => 'Taxonomy'
 	);
 }

@@ -9,7 +9,7 @@ class TaxonomyAdmin extends ModelAdmin {
 
 	static $url_segment = 'taxonomy';
 
-	public static $managed_models = array('Taxonomy');
+	public static $managed_models = array('TaxonomyTerm');
 
 	static $menu_title = 'Taxonomies';
 }
