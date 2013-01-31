@@ -56,10 +56,11 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 		if (!$controller) user_error('Something went wrong, controller is unavailable.', E_USER_ERROR);
 
 		if ($controller->request->param('ID')==='new') {
-			// Do not show parent selection when adding new items - populated automatically.
+			// Hide parent selection when adding new items - populated automatically.
 			$fields->removeByName('ParentID');
-
-			// TODO: do not show parent selection when on top level item.
+		} else if ($this->ParentID==0) {
+			// Hide parent selection on the top level term (Taxonomy cannot become a leaf node)
+			$fields->removeByName('ParentID');
 		} else {
 			// Make the Parent field nicer by pre-filtering and adding descriptions.
 			$fields->removeByName('ParentID');
