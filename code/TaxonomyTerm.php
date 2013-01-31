@@ -33,19 +33,19 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 		}
 	}
 
-	public function canView($record = null) {
+	public function canView($member = null) {
 		return true;
 	}
 
-	public function canEdit($record = null) {
+	public function canEdit($member = null) {
 		return Permission::check('TAXONOMYTERM_EDIT');
  	}
 
-	public function canDelete($record = null) {
+	public function canDelete($member = null) {
 		return Permission::check('TAXONOMYTERM_DELETE');
 	}
 
-	public function canCreate($record = null) {
+	public function canCreate($member = null) {
 		return Permission::check('TAXONOMYTERM_CREATE');
 	}
 
