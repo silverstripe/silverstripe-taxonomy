@@ -13,16 +13,94 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 		'Parent' => 'TaxonomyTerm'
 	);
 
+	/**
+	 * Validate the owner object - check for existence of infinite loops.
+	 * Copied mostly from Hierarchy.php.
+	 */
+	protected function validate() {
+		$validationResult = parent::validate();
+
+		// The object is new, won't be looping.
+		if (!$this->ID) return;
+		// The object has no parent, won't be looping.
+		if (!$this->ParentID) return;
+		// The parent has not changed, skip the check for performance reasons.
+		if (!$this->isChanged('ParentID')) return;
+
+		// Walk the hierarchy upwards until we reach the top, or until we reach the originating node again.
+		$node = $this;
+		while($node) {
+			if ($node->ParentID==$this->ID) {
+				// Hierarchy is looping.
+				$validationResult->error(
+					_t(
+						'Hierarchy.InfiniteLoopNotAllowed',
+						'Infinite loop found within the "{type}" hierarchy. Please change the parent to resolve this',
+						'First argument is the class that makes up the hierarchy.',
+						array('type' => $this->class)
+					),
+					'INFINITE_LOOP'
+				);
+				break;
+			}
+			$node = $node->ParentID ? $node->Parent() : null;
+		}
+
+		return $validationResult;
+	}
+
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		$controller = Controller::curr();
 
-		// Do not show parent selection when adding new items - populated automatically.
-		if ($controller && $controller->request->param('ID')==='new') {
+		if (!$controller) user_error('Something went wrong, controller is unavailable.', E_USER_ERROR);
+
+		if ($controller->request->param('ID')==='new') {
+			// Do not show parent selection when adding new items - populated automatically.
 			$fields->removeByName('ParentID');
+
+			// TODO: do not show parent selection when on top level item.
+		} else {
+			// Make the Parent field nicer by pre-filtering and adding descriptions.
+			$fields->removeByName('ParentID');
+
+			$currentTaxonomy = $this->getTaxonomy();
+			$termArray = array();
+			$terms = TaxonomyTerm::get()->sort('Name');
+			foreach ($terms as $term) {
+				// Disallow making the term a parent of itself.
+				if ($this->ID == $term->ID) continue;
+
+				$termTaxonomy = $term->getTaxonomy();
+
+				// Disallow moving between taxonomies.
+				if ($currentTaxonomy->ID != $termTaxonomy->ID) continue;
+
+				// Augment the name with addiontional information for top level node.
+				if ($term->ParentID) {
+					$termArray[$term->ID] = "$term->Name";
+				} else {
+					$termArray[$term->ID] = "$term->Name (top level term)";
+				}
+			}
+
+			$fields->addFieldToTab('Root.Main', new DropdownField('ParentID', 'Parent', $termArray));
 		}
 
 		return $fields;
+	}
+
+	/**
+	 * Get the top-level ancestor which doubles as the taxonomy.
+	 */
+	public function getTaxonomy() {
+		$object = $this;
+		
+		while($object->ParentID && $object->Parent()) {
+			$object = $object->Parent();
+		}
+		
+		return $object;
 	}
 
 	public function onBeforeDelete() {
