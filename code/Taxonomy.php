@@ -17,19 +17,19 @@ class Taxonomy extends DataObject implements PermissionProvider {
 		}
 	}
 
-	public function canView($record = false) {
+	public function canView($record = null) {
 		return true;
 	}
 
-	public function canEdit($record = false) {
+	public function canEdit($record = null) {
 		return Permission::check('TAXONOMY_EDIT');
  	}
 
-	public function canDelete() {
+	public function canDelete($record = null) {
 		return Permission::check('TAXONOMY_DELETE');
 	}
 
-	public function canCreate() {
+	public function canCreate($record = null) {
 		return Permission::check('TAXONOMY_CREATE');
 	}
 
