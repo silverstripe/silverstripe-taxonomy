@@ -39,7 +39,7 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 
 	public function canEdit($member = null) {
 		return Permission::check('TAXONOMYTERM_EDIT');
- 	}
+	}
 
 	public function canDelete($member = null) {
 		return Permission::check('TAXONOMYTERM_DELETE');
