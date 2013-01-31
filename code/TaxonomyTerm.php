@@ -1,15 +1,15 @@
 <?php
 
 class TaxonomyTerm extends DataObject {
-	static $db = array(
+	public static $db = array(
 		'Name' => 'Varchar(255)'
 	);
 
-	static $has_many = array(
+	public static $has_many = array(
 		'Children' => 'TaxonomyTerm'
 	);
 
-	static $has_one = array(
-		'Parent' => 'TaxonomyTerm',
+	public static $has_one = array(
+		'Parent' => 'TaxonomyTerm'
 	);
 }
