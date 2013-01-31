@@ -1,6 +1,6 @@
 <?php
 
-class TaxonomyTerm extends DataObject {
+class TaxonomyTerm extends DataObject implements PermissionProvider {
 	public static $db = array(
 		'Name' => 'Varchar(255)'
 	);
@@ -24,4 +24,37 @@ class TaxonomyTerm extends DataObject {
 
 		return $fields;
 	}
+
+	public function onBeforeDelete() {
+		parent::onBeforeDelete();
+
+		foreach($this->Children() as $term) {
+			$term->delete();
+		}
+	}
+
+	public function canView($record = false) {
+		return true;
+	}
+
+	public function canEdit($record = false) {
+		return Permission::check('TAXONOMYTERM_EDIT');
+ 	}
+
+	public function canDelete() {
+		return Permission::check('TAXONOMYTERM_DELETE');
+	}
+
+	public function canCreate() {
+		return Permission::check('TAXONOMYTERM_CREATE');
+	}
+
+	public function providePermissions() {
+		return array(
+			'TAXONOMYTERM_EDIT' => 'Edit a taxonomy term',
+			'TAXONOMYTERM_DELETE' => 'Delete a taxonomy term',
+			'TAXONOMYTERM_CREATE' => 'Create a taxonomy term',
+		);
+	}
+
 }
