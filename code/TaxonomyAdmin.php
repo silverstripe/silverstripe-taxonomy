@@ -7,9 +7,15 @@
 
 class TaxonomyAdmin extends ModelAdmin {
 
-	static $url_segment = 'taxonomy';
+	public static $url_segment = 'taxonomy';
 
 	public static $managed_models = array('TaxonomyTerm');
 
-	static $menu_title = 'Taxonomies';
+	public static $menu_title = 'Taxonomies';
+
+	public function getList() {
+		$list = parent::getList();
+		return $list->filter('ParentID', '0');
+	}
+
 }
