@@ -56,7 +56,7 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 				'category' => 'Taxonomy terms',
 			),
 			'TAXONOMYTERM_DELETE' => array(
-				'name' => 'Delete a taxonomy term',
+				'name' => 'Delete a taxonomy term and all nested terms',
 				'category' => 'Taxonomy terms',
 			),
 			'TAXONOMYTERM_CREATE' => array(
