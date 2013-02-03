@@ -21,11 +21,11 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 		$validationResult = parent::validate();
 
 		// The object is new, won't be looping.
-		if (!$this->ID) return;
+		if (!$this->ID) return $validationResult;
 		// The object has no parent, won't be looping.
-		if (!$this->ParentID) return;
+		if (!$this->ParentID) return $validationResult;
 		// The parent has not changed, skip the check for performance reasons.
-		if (!$this->isChanged('ParentID')) return;
+		if (!$this->isChanged('ParentID')) return $validationResult;
 
 		// Walk the hierarchy upwards until we reach the top, or until we reach the originating node again.
 		$node = $this;
