@@ -97,11 +97,15 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 	public function getTaxonomy() {
 		$object = $this;
 		
-		while($object->ParentID && $object->Parent()) {
+		while($object->Parent() && $object->Parent()->exists()) {
 			$object = $object->Parent();
 		}
 		
 		return $object;
+	}
+
+	public function getTaxonomyName() {
+		return $this->getTaxonomy()->Name;
 	}
 
 	public function onBeforeDelete() {
