@@ -88,6 +88,13 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 			$fields->addFieldToTab('Root.Main', new DropdownField('ParentID', 'Parent', $termArray));
 		}
 
+		$childrenGrid = $fields->dataFieldByName('Children');
+		if($childrenGrid) {
+			$deleteAction = $childrenGrid->getConfig()->getComponentByType('GridFieldDeleteAction');
+			$childrenGrid->getConfig()->removeComponent($deleteAction);
+			$childrenGrid->getConfig()->addComponent(new GridFieldDeleteAction(false));
+		}
+
 		return $fields;
 	}
 
