@@ -22,6 +22,9 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 		$childrenGrid = $fields->dataFieldByName('Children');
 		if($childrenGrid) {
 			$deleteAction = $childrenGrid->getConfig()->getComponentByType('GridFieldDeleteAction');
+			$addExistingAutocompleter = $childrenGrid->getConfig()->getComponentByType('GridFieldAddExistingAutocompleter');
+
+			$childrenGrid->getConfig()->removeComponent($addExistingAutocompleter);
 			$childrenGrid->getConfig()->removeComponent($deleteAction);
 			$childrenGrid->getConfig()->addComponent(new GridFieldDeleteAction(false));
 		}
