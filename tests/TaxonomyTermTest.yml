@@ -1,0 +1,9 @@
+TaxonomyTerm:
+    Plant:
+        Name: Plant
+    Vegetable:
+        Name: Vegetable
+        Parent: =>TaxonomyTerm.Plant
+    Carrot:
+        Name: Carrot
+        Parent: =>TaxonomyTerm.Vegetable
