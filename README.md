@@ -22,3 +22,5 @@ Create multiple taxonomies with any number of nested terms.
  * Extract the module in your site's root directory, so it sits alongside framework and cms.
  * Run /dev/build?flush=all to rebuild your database.
  * You should now see a 'Taxonomies' tab on the left of the CMS when you log in next.
+
+For usage instructions see [user manual](docs/user.md);
