@@ -1,8 +1,8 @@
 # Taxonomy usage
 
-This module provides a raw skeleton for maintaining taxonomies in the CMS. The linking between the other objects in the
-CMS and the taxonomy terms can be done in a programmatic manner depending on the requirements. This could for example
-be accomplished through the usage of the `GridField` in the CMS.
+This module provides a raw skeleton for maintaining taxonomies in the CMS. The interface for linking between the other
+objects in the CMS and the taxonomy terms can be provided in a programmatic manner depending on the requirements. This
+could for example be accomplished through the usage of the `GridField` in the CMS.
 
 ## Taxonomy creation
 
