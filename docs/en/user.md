@@ -42,7 +42,7 @@ Site administrator can specify permissions around taxonomies. There are three ne
 * *Delete a taxonomy term and all nested terms*: allows to delete items recursively.
 * *Create a taxonomy term*: allows adding new terms to existing taxonomies.
 
-# Extending Taxonomy
+## Extending Taxonomy
 
 An obvious extension for this module is the ability to browse all pages that are linked to a specified taxonomy term.
 To do so, create a pagetype that either has a has_one to TaxonomyTerm or takes a tag as a parameter to an action. Then
