@@ -85,7 +85,7 @@ of pages or dataobjects. This is one example that pulls a list of all tags that 
 				'SiteTree',
 				"\"SiteTree\".\"ID\"=\"Page_Terms\".\"PageID\" AND \"SiteTree\".\"ParentID\"='$this->ID'"
 			)->sort('Name');
-
+		
 		return $tags;
 	}
 
@@ -120,7 +120,7 @@ children from the usual parent-child relationship, they look up children based o
 	class TaxonomyDirectory extends Page {
 		public function stageChildren($showAll = false) {
 			$termIDString = implode(',', $this->Terms()->map()->keys());
-
+			
 			return Page::get()
 				->where("\"Page\".\"ID\" <> $this->ID")
 				->innerJoin(
@@ -130,11 +130,11 @@ children from the usual parent-child relationship, they look up children based o
 					'TaxonomyTerm',
 					"\"BasePage_Terms\".\"TaxonomyTermID\"=\"TaxonomyTerm\".\"ID\" AND \"TaxonomyTerm\".\"ID\" IN ($termIDString)");
 		}
-
+		
 		public function liveChildren($showAll = false, $onlyDeletedFromStage = false) {
 			return $this->stageChildren($showAll);
 		}
 	}
-
+	
 	class TaxonomyDirectory_Controller extends Page_Controller {
 	}
