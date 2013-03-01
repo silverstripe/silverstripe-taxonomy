@@ -23,4 +23,4 @@ Create multiple taxonomies with any number of nested terms.
  * Run /dev/build?flush=all to rebuild your database.
  * You should now see a 'Taxonomies' tab on the left of the CMS when you log in next.
 
-For usage instructions see [user manual](docs/user.md);
+For usage instructions see [user manual](docs/en/user.md).
