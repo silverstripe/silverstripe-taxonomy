@@ -21,7 +21,7 @@ And also add the reverse of the relation in an extension:
 
 Then add the extension by including this in your `mysite/_config.php`:
 
-	Object::add_extension('TaxonomyTerm', 'TaxonomyTermExtension');
+	TaxonomyTerm::add_extension('TaxonomyTermExtension');
 
 Run a `dev/build?flush=all` and you should see the table created. But you still can't do anything with it! You can fix
 that by using a `GridField` to edit the associated terms. The sample code below will let your content editors add
