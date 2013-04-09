@@ -1,15 +1,15 @@
 <?php
 
 class TaxonomyTerm extends DataObject implements PermissionProvider {
-	public static $db = array(
+	private static $db = array(
 		'Name' => 'Varchar(255)'
 	);
 
-	public static $has_many = array(
+	private static $has_many = array(
 		'Children' => 'TaxonomyTerm'
 	);
 
-	public static $has_one = array(
+	private static $has_one = array(
 		'Parent' => 'TaxonomyTerm'
 	);
 

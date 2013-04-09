@@ -14,7 +14,7 @@ To add the the ability to associate `Page` with `TaxonomyTerm`, you need to add 
 And also add the reverse of the relation in an extension:
 
 	class TaxonomyTermExtension extends DataExtension {
-		public static $belongs_many_many = array(
+		private static $belongs_many_many = array(
 			'Pages' => 'Page'
 		);
 	}
