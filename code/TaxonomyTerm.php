@@ -76,16 +76,34 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 	public function providePermissions() {
 		return array(
 			'TAXONOMYTERM_EDIT' => array(
-				'name' => 'Edit a taxonomy term',
-				'category' => 'Taxonomy terms',
+				'name' => _t(
+					'TaxonomyTerm.EditPermissionLabel',
+					'Edit a taxonomy term'
+				),
+				'category' => _t(
+					'TaxonomyTerm.Category',
+					'Taxonomy terms'
+				),
 			),
 			'TAXONOMYTERM_DELETE' => array(
-				'name' => 'Delete a taxonomy term and all nested terms',
-				'category' => 'Taxonomy terms',
+				'name' => _t(
+					'TaxonomyTerm.DeletePermissionLabel',
+					'Delete a taxonomy term and all nested terms'
+				),
+				'category' => _t(
+					'TaxonomyTerm.Category',
+					'Taxonomy terms'
+				),
 			),
 			'TAXONOMYTERM_CREATE' => array(
-				'name' => 'Create a taxonomy term',
-				'category' => 'Taxonomy terms'
+				'name' => _t(
+					'TaxonomyTerm.CreatePermissionLabel',
+					'Create a taxonomy term'
+				),
+				'category' => _t(
+					'TaxonomyTerm.Category',
+					'Taxonomy terms'
+				),
 			)
 		);
 	}
