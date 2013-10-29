@@ -1,5 +1,7 @@
 # Taxonomy
 
+[![Build Status](https://secure.travis-ci.org/silverstripe-labs/silverstripe-taxonomy.png)](http://travis-ci.org/silverstripe-labs/silverstripe-taxonomy)
+
 ## Introduction
 
 The Taxonomy module add the capability to add and edit simple taxonomies within SilverStripe.
