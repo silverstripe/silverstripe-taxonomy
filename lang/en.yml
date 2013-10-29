@@ -1,0 +1,10 @@
+en:
+  TaxonomyAdmin:
+    MENUTITLE: Taxonomies
+  TaxonomyTerm:
+    Category: 'Taxonomy terms'
+    CreatePermissionLabel: 'Create a taxonomy term'
+    DeletePermissionLabel: 'Delete a taxonomy term and all nested terms'
+    EditPermissionLabel: 'Edit a taxonomy term'
+    PLURALNAME: 'Taxonomy Terms'
+    SINGULARNAME: 'Taxonomy Term'
