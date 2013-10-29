@@ -1,0 +1,10 @@
+ar:
+  TaxonomyAdmin:
+    MENUTITLE: التصنيفات
+  TaxonomyTerm:
+    Category: 'مصطلحات تصنيف'
+    CreatePermissionLabel: 'إنشاء مصطلح تصنيف'
+    DeletePermissionLabel: 'حذف مصطلح تصنيف وجميع المصطلحات المتداخلة'
+    EditPermissionLabel: 'تحرير مصطلح تصنيف'
+    PLURALNAME: 'مصطلحات تصنيف'
+    SINGULARNAME: 'مصطلح تصنيف'

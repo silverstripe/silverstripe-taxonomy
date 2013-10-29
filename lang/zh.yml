@@ -1,0 +1,10 @@
+zh:
+  TaxonomyAdmin:
+    MENUTITLE: 分类
+  TaxonomyTerm:
+    Category: '分类术语'
+    CreatePermissionLabel: '创建一个分类术语'
+    DeletePermissionLabel: '删除一个分类术语及所有嵌套的术语'
+    EditPermissionLabel: '编辑一个分类术语'
+    PLURALNAME: '分类术语'
+    SINGULARNAME: '分类术语'
