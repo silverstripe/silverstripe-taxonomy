@@ -1,1 +1,10 @@
-fi: {}
+fi:
+  TaxonomyAdmin:
+    MENUTITLE: Taksonomiat
+  TaxonomyTerm:
+    Category: 'Taksonomia nimitys'
+    CreatePermissionLabel: 'Luo taksonomia nimitys'
+    DeletePermissionLabel: 'Poista taksonomia nimitys ja kaikki sisäkkäiset nimitykset'
+    EditPermissionLabel: 'Muokkaa taksonomia nimitystä'
+    PLURALNAME: 'Taksonomia nimitykset'
+    SINGULARNAME: 'Taksonomia nimitys'
