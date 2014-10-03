@@ -1,9 +1,10 @@
 <?php
 
 class TaxonomyTermTest extends SapphireTest {
-	static $fixture_file = 'taxonomy/tests/TaxonomyTermTest.yml';
 	
-	function testGetTaxonomy() {
+	protected static $fixture_file = 'TaxonomyTermTest.yml';
+	
+	public function testGetTaxonomy() {
 		// Top level
 		$this->assertEquals($this->objFromFixture('TaxonomyTerm', 'Plant')->getTaxonomy()->Name, 'Plant');
 		// Second level
@@ -12,7 +13,7 @@ class TaxonomyTermTest extends SapphireTest {
 		$this->assertEquals($this->objFromFixture('TaxonomyTerm', 'Carrot')->getTaxonomy()->Name, 'Plant');
 	}
 
-	function testRecursiveDeleteFromTopLevel() {
+	public function testRecursiveDeleteFromTopLevel() {
 		$this->objFromFixture('TaxonomyTerm', 'Plant')->delete();
 
 		$this->assertEquals(
@@ -20,5 +21,17 @@ class TaxonomyTermTest extends SapphireTest {
 			0,
 			"Removing top level term removes all children"
 		);
+	}
+
+	public function testHierarchy() {
+		$plant = $this->objFromFixture('TaxonomyTerm', 'Plant');
+		$vegetable = $this->objFromFixture('TaxonomyTerm', 'Vegetable');
+		$carrot = $this->objFromFixture('TaxonomyTerm', 'Carrot');
+		
+		$this->assertEquals(1, $plant->Children()->Count());
+		$this->assertEquals($plant->ID, $vegetable->Parent()->ID);
+		$this->assertEquals(1, $vegetable->Children()->Count());
+		$this->assertEquals($vegetable->ID, $carrot->Parent()->ID);
+		$this->assertEquals(0, $carrot->Children()->Count());
 	}
 }

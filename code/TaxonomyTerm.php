@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Represents a single taxonomy term
+ *
+ * @method TaxonomyTerm Parent()
+ * @package taxonomy
+ */
 class TaxonomyTerm extends DataObject implements PermissionProvider {
 	private static $db = array(
 		'Name' => 'Varchar(255)'
@@ -11,6 +17,14 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 
 	private static $has_one = array(
 		'Parent' => 'TaxonomyTerm'
+	);
+
+	private static $extensions = array(
+		'Hierarchy'
+	);
+
+	private static $casting = array(
+		'TaxonomyName' => 'Text'
 	);
 
 	public function getCMSFields() {
@@ -34,17 +48,20 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 
 	/**
 	 * Get the top-level ancestor which doubles as the taxonomy.
+	 *
+	 * @return TaxonomyTerm
 	 */
 	public function getTaxonomy() {
-		$object = $this;
-		
-		while($object->Parent() && $object->Parent()->exists()) {
-			$object = $object->Parent();
-		}
-		
-		return $object;
+		return ($parent = $this->Parent()) && $parent->exists()
+			? $parent->getTaxonomy()
+			: $this;
 	}
 
+	/**
+	 * Gets the name of the top-level ancestor
+	 *
+	 * @return string
+	 */
 	public function getTaxonomyName() {
 		return $this->getTaxonomy()->Name;
 	}
