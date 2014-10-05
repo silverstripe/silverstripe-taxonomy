@@ -1,10 +1,10 @@
 <?php
+
 /**
 * Management interface for Taxonomies and TaxonomyTerms
 *
 * @package taxonomy
 */
-
 class TaxonomyAdmin extends ModelAdmin {
 
 	private static $url_segment = 'taxonomy';
