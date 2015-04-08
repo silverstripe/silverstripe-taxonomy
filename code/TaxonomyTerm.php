@@ -1,14 +1,16 @@
 <?php
 
 /**
- * Represents a single taxonomy term
+ * Represents a single taxonomy term. Can be re-ordered in the CMS, and the default sorting is to use the order as
+ * specified in the CMS.
  *
  * @method TaxonomyTerm Parent()
  * @package taxonomy
  */
 class TaxonomyTerm extends DataObject implements PermissionProvider {
 	private static $db = array(
-		'Name' => 'Varchar(255)'
+		'Name' => 'Varchar(255)',
+		'Sort' => 'Int'
 	);
 
 	private static $has_many = array(
@@ -27,11 +29,14 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 		'TaxonomyName' => 'Text'
 	);
 
+	private static $default_sort = 'Sort';
+
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 
 		// For now moving taxonomy terms is not supported.
 		$fields->removeByName('ParentID');
+		$fields->removeByName('Sort');
 
 		$childrenGrid = $fields->dataFieldByName('Children');
 		if($childrenGrid) {
@@ -41,6 +46,17 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 			$childrenGrid->getConfig()->removeComponent($addExistingAutocompleter);
 			$childrenGrid->getConfig()->removeComponent($deleteAction);
 			$childrenGrid->getConfig()->addComponent(new GridFieldDeleteAction(false));
+
+			// Setup sorting of TaxonomyTerm siblings, and fall back to a manual NumericField if no sorting is possible
+			if(class_exists('GridFieldOrderableRows')) {
+				$childrenGrid->getConfig()->addComponent(new GridFieldOrderableRows('Sort'));
+			} elseif(class_exists('GridFieldSortableRows')) {
+				$childrenGrid->getConfig()->addComponent(new GridFieldSortableRows('Sort'));
+			} else {
+				$fields->addFieldToTab('Root.Main', NumericField::create('Sort', 'Sort Order')
+					->setDescription('Enter a whole number to sort this term among siblings (0 is first in the list)')
+				);
+			}
 		}
 
 		return $fields;
