@@ -4,6 +4,11 @@ TaxonomyTerm:
     Vegetable:
         Name: Vegetable
         Parent: =>TaxonomyTerm.Plant
+        Sort: 2
     Carrot:
         Name: Carrot
         Parent: =>TaxonomyTerm.Vegetable
+    Fruit:
+        Name: Fruit
+        Parent: =>TaxonomyTerm.Plant
+        Sort: 1
