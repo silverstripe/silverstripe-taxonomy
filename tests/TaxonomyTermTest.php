@@ -28,10 +28,19 @@ class TaxonomyTermTest extends SapphireTest {
 		$vegetable = $this->objFromFixture('TaxonomyTerm', 'Vegetable');
 		$carrot = $this->objFromFixture('TaxonomyTerm', 'Carrot');
 		
-		$this->assertEquals(1, $plant->Children()->Count());
+		$this->assertEquals(2, $plant->Children()->Count());
 		$this->assertEquals($plant->ID, $vegetable->Parent()->ID);
 		$this->assertEquals(1, $vegetable->Children()->Count());
 		$this->assertEquals($vegetable->ID, $carrot->Parent()->ID);
 		$this->assertEquals(0, $carrot->Children()->Count());
+	}
+
+	public function testSorting() {
+		$plant = $this->objFromFixture('TaxonomyTerm', 'Plant');
+		$vegetable = $this->objFromFixture('TaxonomyTerm', 'Vegetable');
+		$fruit = $this->objFromFixture('TaxonomyTerm', 'Fruit');
+
+		$this->assertEquals($fruit->ID, $plant->Children()->first()->ID);
+		$this->assertEquals($vegetable->ID, $plant->Children()->last()->ID);
 	}
 }
