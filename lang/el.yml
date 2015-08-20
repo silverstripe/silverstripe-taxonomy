@@ -1,0 +1,10 @@
+el:
+  TaxonomyAdmin:
+    MENUTITLE: Ταξινομίσεις
+  TaxonomyTerm:
+    Category: 'Όροι ταξινόμησης'
+    CreatePermissionLabel: 'Δημιουργία όρου ταξινόμησης'
+    DeletePermissionLabel: 'Διαγραφή όρου και ενσωματωμένων όρων'
+    EditPermissionLabel: 'Επεξεργασία όρου'
+    PLURALNAME: 'Όροι Ταξινόμησης'
+    SINGULARNAME: 'Όρος Ταξινόμησης'
