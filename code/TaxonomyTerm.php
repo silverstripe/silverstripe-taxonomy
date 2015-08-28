@@ -81,6 +81,31 @@ class TaxonomyTerm extends DataObject implements PermissionProvider {
 	public function getTaxonomyName() {
 		return $this->getTaxonomy()->Name;
 	}
+	
+	/**
+	 * Finds a Taxonomy matching the $filter, or if it doesn't find it, it creates a new one.
+	 * If the filter is not specific enough and fetches more than one TaxonomyTerm, it will return the first one
+	 *
+	 * @example $taxonomy = TaxonomyTerm::get_or_create(array('Name'=>'bob'), array('Name'=>'bob', 'ParentID'=>5));
+	 *
+	 * @param array filter to search for
+	 * @param array object to write to the DB if the taxonomy wasn't found
+	 * @return TaxonomyTerm found/created toxonomy
+	 */
+	public static function get_or_create($find, $create) {
+		if(!is_array($find) || !is_array($create)) {
+			throw new InvalidArgumentException('Incorrect arguments passed to TaxonomyTerm::get_or_create()');
+		}
+
+		$taxonomy = TaxonomyTerm::get()->filter($find)->first();
+		if(!$taxonomy || !$taxonomy->exists()) {
+			$taxonomy = new TaxonomyTerm($create);
+			$taxonomy->write();
+		}
+		
+		return $taxonomy;
+	}
+
 
 	public function onBeforeDelete() {
 		parent::onBeforeDelete();
