@@ -2,7 +2,7 @@
 	"name": "silverstripe/taxonomy",
 	"description": "Provide extra taxonomy for cataloguing the data.",
 	"type": "silverstripe-module",
-	"keywords": ["silverstripe"],
+	"keywords": ["silverstripe", "cwp"],
 	"license": "BSD-3-Clause",
 	"authors": [
 		{
