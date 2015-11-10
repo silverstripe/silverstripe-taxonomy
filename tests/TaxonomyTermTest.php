@@ -43,4 +43,22 @@ class TaxonomyTermTest extends SapphireTest {
 		$this->assertEquals($fruit->ID, $plant->Children()->first()->ID);
 		$this->assertEquals($vegetable->ID, $plant->Children()->last()->ID);
 	}
+	
+	/**
+	 * Tests correct arguments, get and create a taxonomy
+	 */
+	public function testGetOrCreate() {
+		try {
+			$taxonomy = TaxonomyTerm::get_or_create(1, 'string');
+			$this->fail('An expected exception has not been raised.');
+		} catch (InvalidArgumentException $expected) {}
+		
+		$fruit = TaxonomyTerm::get_or_create(array('Name' => 'Fruit'),
+											 array('Name' => 'Fruit', 'ParentID' => 0));
+		$this->assertEquals($fruit->Sort, 1);
+		
+		$broccoli = TaxonomyTerm::get_or_create(array('Name' => 'Broccoli'),
+												array('Name' => 'Broccoli', 'ParentID' => 0));
+		$this->assertEquals($broccoli->Name, 'Broccoli');
+	}
 }
