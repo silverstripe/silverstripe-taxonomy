@@ -1,3 +1,17 @@
+title: Taxonomies
+summary: Add and edit simple taxonomies in the CMS
+
+# Creating and using taxonomies
+
+## In this section:
+
+* Taxonomy usage, creation and removal
+* Permissions
+
+## Before we begin:
+
+* Make sure you have the SilverStripe [taxonomy](http://addons.silverstripe.org/add-ons/silverstripe/taxonomy) module installed
+
 # Taxonomy usage
 
 This module provides a raw skeleton for maintaining taxonomies in the CMS. The interface for linking between the other
