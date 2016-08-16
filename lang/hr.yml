@@ -1,0 +1,10 @@
+hr:
+  TaxonomyAdmin:
+    MENUTITLE: Taksonomije
+  TaxonomyTerm:
+    Category: 'Pojmovi taksonomije'
+    CreatePermissionLabel: 'Kreiraj pojam taksonomije'
+    DeletePermissionLabel: 'Obriši pojam taksonomije i sve povezane pojmove'
+    EditPermissionLabel: 'Uredi pojam taksonomije'
+    PLURALNAME: 'Pojmovi taksonomije'
+    SINGULARNAME: 'Pojam taksonomije'
