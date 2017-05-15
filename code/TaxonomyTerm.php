@@ -19,7 +19,8 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
     );
 
     private static $has_one = array(
-        'Parent' => 'TaxonomyTerm'
+        'Parent' => 'TaxonomyTerm',
+        'Type' => 'TaxonomyType'
     );
 
     private static $extensions = array(
@@ -32,6 +33,11 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
 
     private static $default_sort = 'Sort';
 
+    private static $summary_fields = array(
+        'Name' => 'Name',
+        'Type.Name' => 'Type'
+    );
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
@@ -39,6 +45,11 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         // For now moving taxonomy terms is not supported.
         $fields->removeByName('ParentID');
         $fields->removeByName('Sort');
+
+        // Child taxonomy terms don't need to choose a type, it is inherited
+        if ($this->getTaxonomy() !== $this) {
+            $fields->removeByName('TypeID');
+        }
 
         $childrenGrid = $fields->dataFieldByName('Children');
         if ($childrenGrid) {
@@ -86,12 +97,54 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         return $this->getTaxonomy()->Name;
     }
 
+    /**
+     * Get the type of the top-level ancestor if it is set
+     *
+     * @return string
+     */
+    public function getTaxonomyType()
+    {
+        $taxonomy = $this->getTaxonomy();
+        if ($taxonomy->Type() && $taxonomy->Type()->exists()) {
+            return $taxonomy->Type()->Name;
+        }
+        return '';
+    }
+
+    /**
+     * Delete all associated children when a taxonomy term is deleted
+     *
+     * {@inheritDoc}
+     */
     public function onBeforeDelete()
     {
         parent::onBeforeDelete();
 
         foreach ($this->Children() as $term) {
+            /** @var TaxonomyTerm $term */
             $term->delete();
+        }
+    }
+
+    /**
+     * Set the "type" relationship for children to that of the parent (recursively)
+     *
+     * {@inheritDoc}
+     */
+    public function onAfterWrite()
+    {
+        parent::onAfterWrite();
+
+        // Write the parent's type to the current term
+        if ($this->Parent()->exists() && $this->Parent()->Type()->exists()) {
+            $this->TypeID = $this->Parent()->Type()->ID;
+        }
+
+        // Write the current term's type to all children
+        foreach ($this->Children() as $term) {
+            /** @var TaxonomyTerm $term */
+            $term->TypeID = $this->Type()->ID;
+            $term->write();
         }
     }
 

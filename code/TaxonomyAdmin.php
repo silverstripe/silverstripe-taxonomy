@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Management interface for Taxonomies and TaxonomyTerms
+* Management interface for Taxonomies, TaxonomyTerms and TaxonomyTypes
 *
 * @package taxonomy
 */
@@ -9,20 +9,32 @@ class TaxonomyAdmin extends ModelAdmin
 {
     private static $url_segment = 'taxonomy';
 
-    private static $managed_models = array('TaxonomyTerm');
+    private static $managed_models = array('TaxonomyTerm', 'TaxonomyType');
 
     private static $menu_title = 'Taxonomies';
-    
+
     private static $menu_icon = "taxonomy/images/tag.png";
 
+    /**
+     * If terms are the models being managed, filter for only top-level terms - no children
+     *
+     * @return SS_List
+     */
     public function getList()
     {
-        $list = parent::getList();
-        return $list->filter('ParentID', '0');
+        if ($this->modelClass === 'TaxonomyTerm') {
+            $list = parent::getList();
+            return $list->filter('ParentID', '0');
+        }
+        return parent::getList();
     }
 
     public function getEditForm($id = null, $fields = null)
     {
+        if ($this->modelClass !== 'TaxonomyTerm') {
+            return parent::getEditForm($id, $fields);
+        }
+
         $form = parent::getEditForm($id, $fields);
 
         /** @var GridField $gf */
