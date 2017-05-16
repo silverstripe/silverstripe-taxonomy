@@ -17,11 +17,11 @@
         "silverstripe-australia/gridfieldextensions": "Allows sorting of TaxonomyTerm objects via drag-and-drop",
         "undefinedoffset/sortablegridfield": "Allows sorting of TaxonomyTerm objects via drag-and-drop"
     },
-	"extra": 
+	"extra":
 	{
-		"branch-alias": 
+		"branch-alias":
 		{
-			"dev-master": "1.1.x-dev"
+			"dev-master": "1.2.x-dev"
 		}
 	}
 }
