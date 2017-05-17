@@ -8,3 +8,6 @@ en:
     EditPermissionLabel: 'Edit a taxonomy term'
     PLURALNAME: 'Taxonomy Terms'
     SINGULARNAME: 'Taxonomy Term'
+  TaxonomyType:
+    PLURALNAME: 'Taxonomy Types'
+    SINGULARNAME: 'Taxonomy Type'

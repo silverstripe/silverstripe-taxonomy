@@ -1,14 +1,26 @@
+TaxonomyType:
+  food:
+    Name: Food
+  beverage:
+    Name: Beverage
 TaxonomyTerm:
-    Plant:
-        Name: Plant
-    Vegetable:
-        Name: Vegetable
-        Parent: =>TaxonomyTerm.Plant
-        Sort: 2
-    Carrot:
-        Name: Carrot
-        Parent: =>TaxonomyTerm.Vegetable
-    Fruit:
-        Name: Fruit
-        Parent: =>TaxonomyTerm.Plant
-        Sort: 1
+  plant:
+    Name: Plant
+    Type: =>TaxonomyType.food
+  vegetable:
+    Name: Vegetable
+    Parent: =>TaxonomyTerm.plant
+    Sort: 2
+  carrot:
+    Name: Carrot
+    Parent: =>TaxonomyTerm.vegetable
+  fruit:
+    Name: Fruit
+    Parent: =>TaxonomyTerm.plant
+    Sort: 1
+  fizzy:
+    Name: Fizzy
+    Type: =>TaxonomyType.beverage
+  lemonade:
+    Name: Lemonade
+    Parent: =>TaxonomyTerm.fizzy

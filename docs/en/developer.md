@@ -30,6 +30,14 @@ Then add the extension by including this in your `mysite/_config.php`:
 TaxonomyTerm::add_extension('TaxonomyTermExtension');
 ```
 
+or with YAML:
+
+```yaml
+TaxonomyTerm:
+  extensions:
+    - TaxonomyTermExtension
+```
+
 Run a `dev/build?flush=all` and you should see the table created. But you still can't do anything with it! You can fix
 that by using a `GridField` to edit the associated terms. The sample code below will let your content editors add
 existing terms with an autocomplete tool, unlink linked terms, but not edit them or add new ones.
@@ -68,13 +76,25 @@ public function getCMSFields()
 
 You can apply that code to a `DataObject` to make use of it in the `ModelAdmin` area.
 
+## Filtering by type
+
+If you have implemented taxonomy types, you can filter them for the GridField autocompleter to ensure that certain
+areas of your CMS will only autocomplete certain types of taxonomy terms. This can be useful, for example, if you want
+to separate your terms between files/images/documents and CMS pages.
+
+To implement, add an extra line to your `getCMSFields` after the `$autoCompleter` has been created:
+
+```php
+$autoCompleter->setSearchList(TaxonomyTerm::get()->filter(array('Type.Name:ExactMatch' => 'CMS Page')));
+```
+
 ## Showing Taxonomy Terms
 
 So you've got a set of terms associated with a page, and you want to show them on your site. You can loop through them
 like any other relation:
 
 ```
-<% loop Terms %>
+<% loop $Terms %>
     <span class="tag">$Name</span>
 <% end_loop %>
 ```
