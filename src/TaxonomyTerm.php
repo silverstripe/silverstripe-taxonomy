@@ -1,5 +1,17 @@
 <?php
 
+namespace SilverStripe\Taxonomy;
+
+use SilverStripe\GridFieldExtensions\GridFieldOrderableRows;
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
+use SilverStripe\ORM\Hierarchy\Hierarchy;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
+use SilverStripe\Forms\NumericField;
+use SilverStripe\Security\Permission;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Security\PermissionProvider;
+
 /**
  * Represents a single taxonomy term. Can be re-ordered in the CMS, and the default sorting is to use the order as
  * specified in the CMS.
@@ -9,22 +21,24 @@
  */
 class TaxonomyTerm extends DataObject implements PermissionProvider
 {
+    private static $table_name = 'TaxonomyTerm';
+
     private static $db = array(
         'Name' => 'Varchar(255)',
         'Sort' => 'Int'
     );
 
     private static $has_many = array(
-        'Children' => 'TaxonomyTerm'
+        'Children' => TaxonomyTerm::class
     );
 
     private static $has_one = array(
-        'Parent' => 'TaxonomyTerm',
-        'Type' => 'TaxonomyType'
+        'Parent' => TaxonomyTerm::class,
+        'Type' => TaxonomyType::class
     );
 
     private static $extensions = array(
-        'Hierarchy'
+        Hierarchy::class
     );
 
     private static $casting = array(
@@ -53,17 +67,17 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
 
         $childrenGrid = $fields->dataFieldByName('Children');
         if ($childrenGrid) {
-            $deleteAction = $childrenGrid->getConfig()->getComponentByType('GridFieldDeleteAction');
-            $addExistingAutocompleter = $childrenGrid->getConfig()->getComponentByType('GridFieldAddExistingAutocompleter');
+            $deleteAction = $childrenGrid->getConfig()->getComponentByType(GridFieldDeleteAction::class);
+            $addExistingAutocompleter = $childrenGrid->getConfig()->getComponentByType(GridFieldAddExistingAutocompleter::class);
 
             $childrenGrid->getConfig()->removeComponent($addExistingAutocompleter);
             $childrenGrid->getConfig()->removeComponent($deleteAction);
             $childrenGrid->getConfig()->addComponent(new GridFieldDeleteAction(false));
 
             // Setup sorting of TaxonomyTerm siblings, and fall back to a manual NumericField if no sorting is possible
-            if (class_exists('GridFieldOrderableRows')) {
-                $childrenGrid->getConfig()->addComponent(new GridFieldOrderableRows('Sort'));
-            } elseif (class_exists('GridFieldSortableRows')) {
+            if (class_exists(GridFieldOrderableRows::class)) {
+                $childrenGrid->getConfig()->addComponent(GridFieldOrderableRows::create('Sort'));
+            } elseif (class_exists(GridFieldSortableRows::class)) {
                 $childrenGrid->getConfig()->addComponent(new GridFieldSortableRows('Sort'));
             } else {
                 $fields->addFieldToTab('Root.Main', NumericField::create('Sort', 'Sort Order')
@@ -163,7 +177,7 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         return Permission::check('TAXONOMYTERM_DELETE');
     }
 
-    public function canCreate($member = null)
+    public function canCreate($member = null, $context = array())
     {
         return Permission::check('TAXONOMYTERM_CREATE');
     }
