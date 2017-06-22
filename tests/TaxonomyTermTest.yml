@@ -1,26 +1,26 @@
-TaxonomyType:
+SilverStripe\Taxonomy\TaxonomyType:
   food:
     Name: Food
   beverage:
     Name: Beverage
-TaxonomyTerm:
+SilverStripe\Taxonomy\TaxonomyTerm:
   plant:
     Name: Plant
-    Type: =>TaxonomyType.food
+    Type: =>SilverStripe\Taxonomy\TaxonomyType.food
   vegetable:
     Name: Vegetable
-    Parent: =>TaxonomyTerm.plant
+    Parent: =>SilverStripe\Taxonomy\TaxonomyTerm.plant
     Sort: 2
   carrot:
     Name: Carrot
-    Parent: =>TaxonomyTerm.vegetable
+    Parent: =>SilverStripe\Taxonomy\TaxonomyTerm.vegetable
   fruit:
     Name: Fruit
-    Parent: =>TaxonomyTerm.plant
+    Parent: =>SilverStripe\Taxonomy\TaxonomyTerm.plant
     Sort: 1
   fizzy:
     Name: Fizzy
-    Type: =>TaxonomyType.beverage
+    Type: =>SilverStripe\Taxonomy\TaxonomyType.beverage
   lemonade:
     Name: Lemonade
-    Parent: =>TaxonomyTerm.fizzy
+    Parent: =>SilverStripe\Taxonomy\TaxonomyTerm.fizzy

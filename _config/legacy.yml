@@ -1,0 +1,9 @@
+---
+Name: taxonomylegacy
+---
+SilverStripe\ORM\DatabaseAdmin:
+  classname_value_remapping:
+    TaxonomyTerm: SilverStripe\Taxonomy\TaxonomyTerm
+    TaxonomyType: SilverStripe\Taxonomy\TaxonomyType
+    TaxonomyAdmin: SilverStripe\Taxonomy\TaxonomyAdmin
+    TaxonomyTermTest: SilverStripe\Taxonomy\TaxonomyTermTest

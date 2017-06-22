@@ -1,5 +1,11 @@
 <?php
 
+namespace SilverStripe\Taxonomy\Tests;
+
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Taxonomy\TaxonomyTerm;
+use SilverStripe\Taxonomy\TaxonomyType;
+
 class TaxonomyTermTest extends SapphireTest
 {
     protected static $fixture_file = 'TaxonomyTermTest.yml';
@@ -7,16 +13,16 @@ class TaxonomyTermTest extends SapphireTest
     public function testGetTaxonomy()
     {
         // Top level
-        $this->assertEquals($this->objFromFixture('TaxonomyTerm', 'plant')->getTaxonomy()->Name, 'Plant');
+        $this->assertEquals($this->objFromFixture(TaxonomyTerm::class, 'plant')->getTaxonomy()->Name, 'Plant');
         // Second level
-        $this->assertEquals($this->objFromFixture('TaxonomyTerm', 'vegetable')->getTaxonomy()->Name, 'Plant');
+        $this->assertEquals($this->objFromFixture(TaxonomyTerm::class, 'vegetable')->getTaxonomy()->Name, 'Plant');
         // Third level
-        $this->assertEquals($this->objFromFixture('TaxonomyTerm', 'carrot')->getTaxonomy()->Name, 'Plant');
+        $this->assertEquals($this->objFromFixture(TaxonomyTerm::class, 'carrot')->getTaxonomy()->Name, 'Plant');
     }
 
     public function testRecursiveDeleteFromTopLevel()
     {
-        $this->objFromFixture('TaxonomyTerm', 'plant')->delete();
+        $this->objFromFixture(TaxonomyTerm::class, 'plant')->delete();
 
         $this->assertEquals(
             TaxonomyTerm::get()->filter(array('Name' => 'Carrot'))->Count(),
@@ -27,9 +33,9 @@ class TaxonomyTermTest extends SapphireTest
 
     public function testHierarchy()
     {
-        $plant = $this->objFromFixture('TaxonomyTerm', 'plant');
-        $vegetable = $this->objFromFixture('TaxonomyTerm', 'vegetable');
-        $carrot = $this->objFromFixture('TaxonomyTerm', 'carrot');
+        $plant = $this->objFromFixture(TaxonomyTerm::class, 'plant');
+        $vegetable = $this->objFromFixture(TaxonomyTerm::class, 'vegetable');
+        $carrot = $this->objFromFixture(TaxonomyTerm::class, 'carrot');
 
         $this->assertEquals(2, $plant->Children()->Count());
         $this->assertEquals($plant->ID, $vegetable->Parent()->ID);
@@ -40,9 +46,9 @@ class TaxonomyTermTest extends SapphireTest
 
     public function testSorting()
     {
-        $plant = $this->objFromFixture('TaxonomyTerm', 'plant');
-        $vegetable = $this->objFromFixture('TaxonomyTerm', 'vegetable');
-        $fruit = $this->objFromFixture('TaxonomyTerm', 'fruit');
+        $plant = $this->objFromFixture(TaxonomyTerm::class, 'plant');
+        $vegetable = $this->objFromFixture(TaxonomyTerm::class, 'vegetable');
+        $fruit = $this->objFromFixture(TaxonomyTerm::class, 'fruit');
 
         $this->assertEquals($fruit->ID, $plant->Children()->first()->ID);
         $this->assertEquals($vegetable->ID, $plant->Children()->last()->ID);
@@ -50,23 +56,23 @@ class TaxonomyTermTest extends SapphireTest
 
     public function testTypeIsInheritedByChildren()
     {
-        $this->assertSame('Beverage', $this->objFromFixture('TaxonomyTerm', 'fizzy')->getTaxonomyType());
+        $this->assertSame('Beverage', $this->objFromFixture(TaxonomyTerm::class, 'fizzy')->getTaxonomyType());
 
-        $this->assertSame('Beverage', $this->objFromFixture('TaxonomyTerm', 'lemonade')->getTaxonomyType());
+        $this->assertSame('Beverage', $this->objFromFixture(TaxonomyTerm::class, 'lemonade')->getTaxonomyType());
     }
 
     public function testTypeIsWrittenToChildren()
     {
-        $plant = $this->objFromFixture('TaxonomyTerm', 'plant');
-        $beverageType = $this->objFromFixture('TaxonomyType', 'beverage');
+        $plant = $this->objFromFixture(TaxonomyTerm::class, 'plant');
+        $beverageType = $this->objFromFixture(TaxonomyType::class, 'beverage');
 
         $plant->TypeID = $beverageType->ID;
         $plant->write();
 
         // Direct child
-        $this->assertSame('Beverage', $this->objFromFixture('TaxonomyTerm', 'vegetable')->Type()->Name);
+        $this->assertSame('Beverage', $this->objFromFixture(TaxonomyTerm::class, 'vegetable')->Type()->Name);
 
         // Grand child
-        $this->assertSame('Beverage', $this->objFromFixture('TaxonomyTerm', 'carrot')->Type()->Name);
+        $this->assertSame('Beverage', $this->objFromFixture(TaxonomyTerm::class, 'carrot')->Type()->Name);
     }
 }

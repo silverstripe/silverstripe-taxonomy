@@ -8,7 +8,7 @@ The Taxonomy module add the capability to add and edit simple taxonomies within 
 
 ## Requirements
 
- * SilverStripe 3.1+
+ * SilverStripe 4.0+
 
 ## Features
 
@@ -16,10 +16,10 @@ Create multiple taxonomies with any number of nested terms.
 
 ## Installation
 
- * Download the module.
- * Extract the module in your site's root directory, so it sits alongside framework and CMS.
- * Run `/dev/build?flush=all` to rebuild your database.
- * You should now see a 'Taxonomies' tab on the left of the CMS when you log in next.
+```
+$ composer require silverstripe/taxonomy
+```
+Afterwards run `/dev/build?flush=all` to rebuild your database.
 
 For usage instructions see [user manual](docs/en/userguide/index.md).
 
@@ -30,3 +30,7 @@ For usage instructions see [user manual](docs/en/userguide/index.md).
 Translations of the natural language strings are managed through a third party translation interface, transifex.com. Newly added strings will be periodically uploaded there for translation, and any new translations will be merged back to the project source code.
 
 Please use [https://www.transifex.com/projects/p/silverstripe-taxonomy](https://www.transifex.com/projects/p/silverstripe-taxonomy) to contribute translations, rather than sending pull requests with YAML files.
+
+## Reporting Issues
+
+Please [create an issue](http://github.com/silverstripe/silverstripe-taxonomy/issues) for any bugs you've found, or features you're missing.

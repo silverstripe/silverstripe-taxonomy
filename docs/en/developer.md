@@ -8,8 +8,10 @@ A taxonomy is of extremely limited use by itself. To make use of it, you need to
 To add the the ability to associate `Page` with `TaxonomyTerm`, you need to add the many-many relation to `Page`:
 
 ```php
+use SilverStripe\Taxonomy\TaxonomyTerm;
+// ...
 private static $many_many = array(
-    'Terms' => 'TaxonomyTerm'
+    'Terms' => TaxonomyTerm::class
 );
 ```
 
@@ -24,16 +26,10 @@ class TaxonomyTermExtension extends DataExtension
 }
 ```
 
-Then add the extension by including this in your `mysite/_config.php`:
-
-```php
-TaxonomyTerm::add_extension('TaxonomyTermExtension');
-```
-
-or with YAML:
+Then add the extension by including this in your `mysite/_config/config.yml`:
 
 ```yaml
-TaxonomyTerm:
+SilverStripe\Taxonomy\TaxonomyTerm:
   extensions:
     - TaxonomyTermExtension
 ```
@@ -62,7 +58,7 @@ public function getCMSFields()
 
     $fields->addFieldToTab(
         'Root.Tags',
-        new GridField(
+        GridField::create(
             'Terms',
             'Terms',
             $this->Terms(),
@@ -175,10 +171,5 @@ class TaxonomyDirectory extends Page
     {
         return $this->stageChildren($showAll);
     }
-}
-
-class TaxonomyDirectory_Controller extends Page_Controller
-{
-
 }
 ```
