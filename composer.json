@@ -1,19 +1,22 @@
 {
-	"name": "silverstripe/taxonomy",
-	"description": "Provide extra taxonomy for cataloguing the data.",
-	"type": "silverstripe-module",
-	"keywords": ["silverstripe", "cwp"],
-	"license": "BSD-3-Clause",
-	"authors": [
-		{
-			"name": "Robert Curry",
-			"email": "robert@silverstripe.com"
-		}
-	],
-	"require": {
-		"silverstripe/framework": "^4@dev",
+    "name": "silverstripe/taxonomy",
+    "description": "Provide extra taxonomy for cataloguing the data.",
+    "type": "silverstripe-module",
+    "keywords": [
+        "silverstripe",
+        "cwp"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Robert Curry",
+            "email": "robert@silverstripe.com"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^4@dev",
         "silverstripe/admin": "^1@dev"
-	},
+    },
     "suggest": {
         "silverstripe-australia/gridfieldextensions": "Allows sorting of TaxonomyTerm objects via drag-and-drop",
         "undefinedoffset/sortablegridfield": "Allows sorting of TaxonomyTerm objects via drag-and-drop"
@@ -24,11 +27,9 @@
             "SilverStripe\\Taxonomy\\Tests\\": "tests/"
         }
     },
-	"extra":
-	{
-		"branch-alias":
-		{
-			"dev-master": "2.0.x-dev"
-		}
-	}
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
 }

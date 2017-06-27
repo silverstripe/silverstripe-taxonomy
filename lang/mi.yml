@@ -1,6 +1,6 @@
 mi:
   TaxonomyAdmin:
-    MENUTITLE: Ngā Pūnaha Whakarōpū
+    MENUTITLE: 'Ngā Pūnaha Whakarōpū'
   TaxonomyTerm:
     Category: 'Ngā Kupu Pūnaha Whakarōpū'
     CreatePermissionLabel: 'Hangaia he kupu pūnaha whakarōpū'
