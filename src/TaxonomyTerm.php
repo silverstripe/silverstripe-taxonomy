@@ -80,8 +80,12 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
             } elseif (class_exists(GridFieldSortableRows::class)) {
                 $childrenGrid->getConfig()->addComponent(new GridFieldSortableRows('Sort'));
             } else {
-                $fields->addFieldToTab('Root.Main', NumericField::create('Sort', 'Sort Order')
-                    ->setDescription('Enter a whole number to sort this term among siblings (0 is first in the list)')
+                $fields->addFieldToTab(
+                    'Root.Main',
+                    NumericField::create('Sort', 'Sort Order')
+                        ->setDescription(
+                            'Enter a whole number to sort this term among siblings (0 is first in the list)'
+                        )
                 );
             }
         }
