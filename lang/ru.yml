@@ -1,0 +1,10 @@
+ru:
+  TaxonomyAdmin:
+    MENUTITLE: 'Таксономииjavascript:;'
+  TaxonomyTerm:
+    Category: 'Термины таксономии'
+    CreatePermissionLabel: 'Создать термин таксономии'
+    DeletePermissionLabel: 'Удалить термин таксономии и все вложенные термины'
+    EditPermissionLabel: 'Редактировать термин таксономии'
+    PLURALNAME: 'Термины таксономии'
+    SINGULARNAME: 'Термин таксономии'
