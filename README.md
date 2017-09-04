@@ -1,6 +1,7 @@
 # Taxonomy
 
 [![Build Status](https://secure.travis-ci.org/silverstripe/silverstripe-taxonomy.png)](http://travis-ci.org/silverstripe/silverstripe-taxonomy)
+[![Code Coverage](https://codecov.io/gh/silverstripe/silverstripe-taxonomy/branch/master/graph/badge.svg)](https://codecov.io/gh/silverstripe/silverstripe-taxonomy)
 
 ## Introduction
 
