@@ -4,7 +4,7 @@ namespace SilverStripe\Taxonomy;
 
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\GridFieldExtensions\GridFieldOrderableRows;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\ORM\SS_List;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
