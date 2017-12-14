@@ -1,6 +1,6 @@
 ru:
   TaxonomyAdmin:
-    MENUTITLE: 'Таксономииjavascript:;'
+    MENUTITLE: Таксономии
   TaxonomyTerm:
     Category: 'Термины таксономии'
     CreatePermissionLabel: 'Создать термин таксономии'
