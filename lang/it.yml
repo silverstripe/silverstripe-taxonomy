@@ -1,0 +1,10 @@
+it:
+  TaxonomyAdmin:
+    MENUTITLE: Tassonomie
+  TaxonomyTerm:
+    Category: 'Termini tassonomici'
+    CreatePermissionLabel: 'Crea termine tassonomico'
+    DeletePermissionLabel: 'Elimina un termine tassonomico e tutti i termini nidificati'
+    EditPermissionLabel: 'Modifica un termine tassonomico e tutti i termini nidificati'
+    PLURALNAME: 'Termini tassonomici'
+    SINGULARNAME: 'Termine tassonomico'
