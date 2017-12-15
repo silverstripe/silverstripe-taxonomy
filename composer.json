@@ -1,7 +1,7 @@
 {
     "name": "silverstripe/taxonomy",
     "description": "Provide extra taxonomy for cataloguing the data.",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "keywords": [
         "silverstripe",
         "cwp"
@@ -34,7 +34,10 @@
     "extra": {
         "branch-alias": {
             "dev-master": "2.0.x-dev"
-        }
+        },
+        "expose": [
+            "images"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true

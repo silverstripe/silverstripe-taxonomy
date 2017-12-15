@@ -21,7 +21,7 @@ class TaxonomyAdmin extends ModelAdmin
 
     private static $menu_title = 'Taxonomies';
 
-    private static $menu_icon = "taxonomy/images/tag.png";
+    private static $menu_icon = "silverstripe/taxonomy:images/tag.png";
 
     /**
      * If terms are the models being managed, filter for only top-level terms - no children
