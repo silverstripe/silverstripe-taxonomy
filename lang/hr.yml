@@ -1,7 +1,7 @@
 hr:
-  TaxonomyAdmin:
+  SilverStripe\Taxonomy\TaxonomyAdmin:
     MENUTITLE: Taksonomije
-  TaxonomyTerm:
+  SilverStripe\Taxonomy\TaxonomyTerm:
     Category: 'Pojmovi taksonomije'
     CreatePermissionLabel: 'Kreiraj pojam taksonomije'
     DeletePermissionLabel: 'Obriši pojam taksonomije i sve povezane pojmove'

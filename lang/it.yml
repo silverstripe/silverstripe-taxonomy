@@ -1,7 +1,7 @@
 it:
-  TaxonomyAdmin:
+  SilverStripe\Taxonomy\TaxonomyAdmin:
     MENUTITLE: Tassonomie
-  TaxonomyTerm:
+  SilverStripe\Taxonomy\TaxonomyTerm:
     Category: 'Termini tassonomici'
     CreatePermissionLabel: 'Crea termine tassonomico'
     DeletePermissionLabel: 'Elimina un termine tassonomico e tutti i termini nidificati'

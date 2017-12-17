@@ -1,7 +1,7 @@
 fi:
-  TaxonomyAdmin:
+  SilverStripe\Taxonomy\TaxonomyAdmin:
     MENUTITLE: Taksonomiat
-  TaxonomyTerm:
+  SilverStripe\Taxonomy\TaxonomyTerm:
     Category: 'Taksonomia nimitys'
     CreatePermissionLabel: 'Luo taksonomia nimitys'
     DeletePermissionLabel: 'Poista taksonomia nimitys ja kaikki sisäkkäiset nimitykset'

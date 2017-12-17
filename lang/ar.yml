@@ -1,7 +1,7 @@
 ar:
-  TaxonomyAdmin:
+  SilverStripe\Taxonomy\TaxonomyAdmin:
     MENUTITLE: التصنيفات
-  TaxonomyTerm:
+  SilverStripe\Taxonomy\TaxonomyTerm:
     Category: 'مصطلحات تصنيف'
     CreatePermissionLabel: 'إنشاء مصطلح تصنيف'
     DeletePermissionLabel: 'حذف مصطلح تصنيف وجميع المصطلحات المتداخلة'
