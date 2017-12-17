@@ -4,7 +4,7 @@ namespace SilverStripe\Taxonomy;
 
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\GridFieldExtensions\GridFieldOrderableRows;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\ORM\SS_List;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
@@ -21,7 +21,7 @@ class TaxonomyAdmin extends ModelAdmin
 
     private static $menu_title = 'Taxonomies';
 
-    private static $menu_icon = "taxonomy/images/tag.png";
+    private static $menu_icon = "silverstripe/taxonomy:images/tag.png";
 
     /**
      * If terms are the models being managed, filter for only top-level terms - no children

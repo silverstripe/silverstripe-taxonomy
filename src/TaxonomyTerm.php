@@ -2,7 +2,7 @@
 
 namespace SilverStripe\Taxonomy;
 
-use SilverStripe\GridFieldExtensions\GridFieldOrderableRows;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
@@ -68,7 +68,9 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         $childrenGrid = $fields->dataFieldByName('Children');
         if ($childrenGrid) {
             $deleteAction = $childrenGrid->getConfig()->getComponentByType(GridFieldDeleteAction::class);
-            $addExistingAutocompleter = $childrenGrid->getConfig()->getComponentByType(GridFieldAddExistingAutocompleter::class);
+            $addExistingAutocompleter = $childrenGrid
+                ->getConfig()
+                ->getComponentByType(GridFieldAddExistingAutocompleter::class);
 
             $childrenGrid->getConfig()->removeComponent($addExistingAutocompleter);
             $childrenGrid->getConfig()->removeComponent($deleteAction);

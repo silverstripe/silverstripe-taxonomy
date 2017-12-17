@@ -1,6 +1,3 @@
-title: Taxonomies
-summary: Add and edit simple taxonomies in the CMS
-
 # Creating and using taxonomies
 
 ## In this section:

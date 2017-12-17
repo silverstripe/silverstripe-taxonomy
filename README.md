@@ -1,7 +1,8 @@
 # Taxonomy
 
-[![Build Status](https://secure.travis-ci.org/silverstripe/silverstripe-taxonomy.png)](http://travis-ci.org/silverstripe/silverstripe-taxonomy)
-[![Code Coverage](https://codecov.io/gh/silverstripe/silverstripe-taxonomy/branch/master/graph/badge.svg)](https://codecov.io/gh/silverstripe/silverstripe-taxonomy)
+[![Build Status](https://img.shields.io/travis/silverstripe/silverstripe-taxonomy.svg)](http://travis-ci.org/silverstripe/silverstripe-taxonomy)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/silverstripe/silverstripe-taxonomy.svg)](https://scrutinizer-ci.com/g/silverstripe/silverstripe-taxonomy/?branch=master)
+[![Code Coverage](https://img.shields.io/codecov/c/github/silverstripe/silverstripe-taxonomy.svg)](https://codecov.io/gh/silverstripe/silverstripe-taxonomy)
 
 ## Introduction
 
@@ -10,6 +11,8 @@ The Taxonomy module add the capability to add and edit simple taxonomies within 
 ## Requirements
 
  * SilverStripe 4.0+
+ 
+ **Note:** this version is compatible with SilverStripe 4. For SilverStripe 3, please see [the 1.x release line](https://github.com/silverstripe/silverstripe-taxonomy/tree/1.2).
 
 ## Features
 
