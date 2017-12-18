@@ -193,31 +193,31 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         return array(
             'TAXONOMYTERM_EDIT' => array(
                 'name' => _t(
-                    'TaxonomyTerm.EditPermissionLabel',
+                    __CLASS__ . '.EditPermissionLabel',
                     'Edit a taxonomy term'
                 ),
                 'category' => _t(
-                    'TaxonomyTerm.Category',
+                    __CLASS__ . '.Category',
                     'Taxonomy terms'
                 ),
             ),
             'TAXONOMYTERM_DELETE' => array(
                 'name' => _t(
-                    'TaxonomyTerm.DeletePermissionLabel',
+                    __CLASS__ . '.DeletePermissionLabel',
                     'Delete a taxonomy term and all nested terms'
                 ),
                 'category' => _t(
-                    'TaxonomyTerm.Category',
+                    __CLASS__ . '.Category',
                     'Taxonomy terms'
                 ),
             ),
             'TAXONOMYTERM_CREATE' => array(
                 'name' => _t(
-                    'TaxonomyTerm.CreatePermissionLabel',
+                    __CLASS__ . '.CreatePermissionLabel',
                     'Create a taxonomy term'
                 ),
                 'category' => _t(
-                    'TaxonomyTerm.Category',
+                    __CLASS__ . '.Category',
                     'Taxonomy terms'
                 ),
             )

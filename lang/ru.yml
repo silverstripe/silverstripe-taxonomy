@@ -1,7 +1,7 @@
 ru:
-  TaxonomyAdmin:
+  SilverStripe\Taxonomy\TaxonomyAdmin:
     MENUTITLE: Таксономии
-  TaxonomyTerm:
+  SilverStripe\Taxonomy\TaxonomyTerm:
     Category: 'Термины таксономии'
     CreatePermissionLabel: 'Создать термин таксономии'
     DeletePermissionLabel: 'Удалить термин таксономии и все вложенные термины'

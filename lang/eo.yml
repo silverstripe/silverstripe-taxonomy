@@ -1,7 +1,7 @@
 eo:
-  TaxonomyAdmin:
+  SilverStripe\Taxonomy\TaxonomyAdmin:
     MENUTITLE: Taksonomioj
-  TaxonomyTerm:
+  SilverStripe\Taxonomy\TaxonomyTerm:
     Category: 'Taksonomiaj terminoj'
     CreatePermissionLabel: 'Krei taksonomian terminon'
     DeletePermissionLabel: 'Forigi taksonomian terminon kaj ĉiujn ingitajn terminojn'
