@@ -197,7 +197,7 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
                     'Edit a taxonomy term'
                 ),
                 'category' => _t(
-                    __CLASS__ . '.TaxonomyTerm.Category',
+                    __CLASS__ . '.Category',
                     'Taxonomy terms'
                 ),
             ),

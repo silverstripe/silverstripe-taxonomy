@@ -11,7 +11,6 @@ en:
       one: 'A Taxonomy Term'
       other: '{count} Taxonomy Terms'
     SINGULARNAME: 'Taxonomy Term'
-    TaxonomyTerm.Category: 'Taxonomy terms'
   SilverStripe\Taxonomy\TaxonomyType:
     PLURALNAME: 'Taxonomy Types'
     PLURALS:
