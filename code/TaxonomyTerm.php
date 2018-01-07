@@ -11,7 +11,8 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
 {
     private static $db = array(
         'Name' => 'Varchar(255)',
-        'Sort' => 'Int'
+        'Sort' => 'Int',
+        'URLSegment' => 'Varchar(255)'
     );
 
     private static $has_many = array(
@@ -123,6 +124,29 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         foreach ($this->Children() as $term) {
             /** @var TaxonomyTerm $term */
             $term->delete();
+        }
+    }
+    /**
+     *  Set the URL segment allowing filtering by url slug
+     *
+     *  {@inheritDoc}
+     */
+    public function onBeforeWrite() {
+
+        parent::onBeforeWrite();
+
+        // Write the URLSegment to allow for Taxonomy navigation only if one is not supplied
+        if ($this->Name && $this->URLSegment == null)
+        {
+            $this->URLSegment = singleton('Sitetree')->generateURLSegment($this->Name);
+
+            // Ensure that this object has a non-conflicting URLSegment value.
+            $count = 2;
+            while ( TaxonomyTerm::get()->filter(['URLSegment' => $this->URLSegment])->exclude(array('ID' => $this->ID))->exists() )
+            {
+                $this->URLSegment = preg_replace('/-[0-9]+$/', null, $this->URLSegment) . '-' . $count;
+                $count++;
+            }
         }
     }
 

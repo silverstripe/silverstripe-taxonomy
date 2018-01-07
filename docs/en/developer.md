@@ -197,23 +197,24 @@ After: framework/routes#coreroutes
 Director:
   rules:
     'tag/$ID!': 'TaxonomyDirectoryController'
-    
+
 ```
 
-In this example, any request made to `/code/<TAG>` would render a page which contains a list of pages that uses the
-Taxonomy Term specified by `<TAG>`. You can override the provided template `TaxonomyDirectory.ss` in your own theme.
+In this example, any request made to `/node/<TAG>` would render a page which contains a list of pages that uses the
+Taxonomy Term specified by `<TAG>`. You can set the path 'node/' to any thing you want e.g. 'tag', 'taxonomy' etc.
+
+You can override the provided template `TaxonomyDirectory.ss` in your own theme.
 
 Currently the following variables are available to the template;
 1. `Title` - the Taxonomy Term you are searching for
-1. `Term` - the Taxonomy Term you are searching for
-1. `Pages` - a list of `Page` objects
+2. `Pages` - a list of `Page` objects
 
 An example for a template;
 ```html
 
 <h1>Taxonomy directory</h1>
 
-<h2>Results for '$Term'</h2>
+<h2>Results for '$Title'</h2>
 
 <ul>
 <% loop $Pages %>
