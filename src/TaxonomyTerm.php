@@ -175,16 +175,28 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
 
     public function canEdit($member = null)
     {
+        $extended = $this->extendedCan(__FUNCTION__, $member);
+        if ($extended !== null) {
+            return $extended;
+        }
         return Permission::check('TAXONOMYTERM_EDIT');
     }
 
     public function canDelete($member = null)
     {
+        $extended = $this->extendedCan(__FUNCTION__, $member);
+        if ($extended !== null) {
+            return $extended;
+        }
         return Permission::check('TAXONOMYTERM_DELETE');
     }
 
     public function canCreate($member = null, $context = array())
     {
+        $extended = $this->extendedCan(__FUNCTION__, $member);
+        if ($extended !== null) {
+            return $extended;
+        }
         return Permission::check('TAXONOMYTERM_CREATE');
     }
 
