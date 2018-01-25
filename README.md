@@ -11,7 +11,7 @@ The Taxonomy module add the capability to add and edit simple taxonomies within 
 ## Requirements
 
  * SilverStripe 4.0+
- * SilverStripe Admin Module 4.0.2+
+ * SilverStripe Admin Module 1.0.2+
  
  **Note:** this version is compatible with SilverStripe 4. For SilverStripe 3, please see [the 1.x release line](https://github.com/silverstripe/silverstripe-taxonomy/tree/1.2).
 
