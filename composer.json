@@ -22,7 +22,7 @@
         "squizlabs/php_codesniffer": "^3.0"
     },
     "suggest": {
-        "symbiote/gridfieldextensions": "Allows sorting of TaxonomyTerm objects via drag-and-drop",
+        "symbiote/silverstripe-gridfieldextensions": "Allows sorting of TaxonomyTerm objects via drag-and-drop",
         "undefinedoffset/sortablegridfield": "Allows sorting of TaxonomyTerm objects via drag-and-drop"
     },
     "autoload": {
