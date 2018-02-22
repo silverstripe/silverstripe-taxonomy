@@ -14,22 +14,32 @@ class TaxonomyDirectoryController extends Page_Controller
 
     public function index(SS_HTTPRequest $HTTPRequest)
     {
-        $termString = $HTTPRequest->param('ID');
+        //look up the term to avoid sql injection by using the ORM
+        $term = TaxonomyTerm::get()->filter(['URLSegment' => $HTTPRequest->param('ID')])->first();
 
-        $pages = Page::get()
-            ->innerJoin(
-                'BasePage_Terms',
-                '"Page"."ID"="BasePage_Terms"."BasePageID"')
-            ->innerJoin(
-                'TaxonomyTerm',
-                "\"BasePage_Terms\".\"TaxonomyTermID\"=\"TaxonomyTerm\".\"ID\" AND \"TaxonomyTerm\".\"Name\" = '$termString'");
+        if ($term) {
+            $data = ArrayData::create(array(
+                'Title' => $term->Name,
+                'Results' => Page::get()
+                    ->innerJoin(
+                        'BasePage_Terms',
+                        '"Page"."ID"="BasePage_Terms"."BasePageID"')
+                    ->innerJoin(
+                        'TaxonomyTerm',
+                        "\"BasePage_Terms\".\"TaxonomyTermID\"=\"TaxonomyTerm\".\"ID\" AND \"TaxonomyTerm\".\"ID\" = '$term->ID'"),
+                'Breadcrumbs' => $this->renderBreadcrumb($term->Name)
+            ));
 
-        return $this->customise(new ArrayData(array(
-            'Title' => $termString,
-            'Term' => $termString,
-            'Pages' => $pages,
-            'Breadcrumbs' => $this->renderBreadcrumb($termString)
-        )))->renderWith(array("TaxonomyDirectory", "Page"));
+        } else {
+           //no term found return null results
+           $data = ArrayData::create(array(
+               'Title' => Convert::raw2sql($HTTPRequest->param('ID'), true),
+               'Results' => null,
+               'Breadcrumbs' => $this->renderBreadcrumb(Convert::raw2sql($HTTPRequest->param('ID'), true))
+           ));
+        }
+
+        return $this->customise($data)->renderWith(array("TaxonomyDirectory", "Page"));
     }
 
     protected function renderBreadcrumb($termString)

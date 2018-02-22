@@ -1,6 +1,6 @@
 <h1>Taxonomy directory</h1>
 
-<h2>Results for '$Term'</h2>
+<h2>Results for '$Title'</h2>
 
 <ul>
 <% loop $Pages %>
