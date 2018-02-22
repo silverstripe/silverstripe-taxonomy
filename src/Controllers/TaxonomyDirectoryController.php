@@ -9,6 +9,10 @@ use SilverStripe\ORM\ArrayList;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\SSViewer;
 
+if (!class_exists(PageController::class)) {
+    return;
+}
+
 /**
  * Class TaxonomyDirectoryController
  *
@@ -28,17 +32,20 @@ class TaxonomyDirectoryController extends PageController
         $pages = Page::get()
             ->innerJoin(
                 'BasePage_Terms',
-                '"Page"."ID"="BasePage_Terms"."BasePageID"')
+                '"Page"."ID"="BasePage_Terms"."BasePageID"'
+            )
             ->innerJoin(
                 'TaxonomyTerm',
-                "\"BasePage_Terms\".\"TaxonomyTermID\"=\"TaxonomyTerm\".\"ID\" AND \"TaxonomyTerm\".\"Name\" = '$termString'");
+                "\"BasePage_Terms\".\"TaxonomyTermID\"=\"TaxonomyTerm\".\"ID\" "
+                . "AND \"TaxonomyTerm\".\"Name\" = '$termString'"
+            );
 
         return $this->customise(new ArrayData(array(
             'Title' => $termString,
             'Term' => $termString,
             'Pages' => $pages,
             'Breadcrumbs' => $this->renderBreadcrumb($termString)
-        )))->renderWith(array("TaxonomyDirectory", "Page"));
+        )))->renderWith(array(__CLASS__, "Page"));
     }
 
     protected function renderBreadcrumb($termString)
@@ -51,6 +58,4 @@ class TaxonomyDirectoryController extends PageController
             "Pages" => new ArrayList(array($page))
         ))));
     }
-
 }
-
