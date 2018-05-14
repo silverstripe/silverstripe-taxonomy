@@ -12,17 +12,11 @@ class TaxonomyDirectoryController extends Page_Controller
         'index'
     );
 
-    public function index(SS_HTTPRequest $HTTPRequest)
+    public function index(SS_HTTPRequest $request)
     {
-        $termString = $HTTPRequest->param('ID');
+        $termString = $request->param('ID');
 
-        $pages = Page::get()
-            ->innerJoin(
-                'BasePage_Terms',
-                '"Page"."ID"="BasePage_Terms"."BasePageID"')
-            ->innerJoin(
-                'TaxonomyTerm',
-                "\"BasePage_Terms\".\"TaxonomyTermID\"=\"TaxonomyTerm\".\"ID\" AND \"TaxonomyTerm\".\"Name\" = '$termString'");
+        $pages = Page::get()->filter(['Terms.Name' => $termString]);
 
         return $this->customise(new ArrayData(array(
             'Title' => $termString,
