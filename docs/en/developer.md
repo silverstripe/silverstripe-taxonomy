@@ -21,7 +21,7 @@ And also add the reverse of the relation in an extension:
 class TaxonomyTermExtension extends DataExtension
 {
     private static $belongs_many_many = array(
-        'Pages' => 'Page'
+        'Pages' => Page::class,
     );
 }
 ```
@@ -44,13 +44,13 @@ public function getCMSFields()
     $fields = parent::getCMSFields();
 
     $components = GridFieldConfig_RelationEditor::create();
-    $components->removeComponentsByType('GridFieldAddNewButton');
-    $components->removeComponentsByType('GridFieldEditButton');
+    $components->removeComponentsByType(GridFieldAddNewButton::class);
+    $components->removeComponentsByType(GridFieldEditButton::class);
 
-    $autoCompleter = $components->getComponentByType('GridFieldAddExistingAutocompleter');
+    $autoCompleter = $components->getComponentByType(GridFieldAddExistingAutocompleter::class);
     $autoCompleter->setResultsFormat('$Name ($TaxonomyName)');
 
-    $dataColumns = $components->getComponentByType('GridFieldDataColumns');
+    $dataColumns = $components->getComponentByType(GridFieldDataColumns::class);
     $dataColumns->setDisplayFields(array(
         'Name' => 'Term',
         'TaxonomyName' => 'Taxonomy'
@@ -126,14 +126,7 @@ You can then filter a result set by performing an inner join on it to restrict i
 term in their many-many relation (referenced by "$tagID"):
 
 ```php
-$pages = $this->Children();
-$pages = $pages->innerJoin(
-        'BasePage_Terms',
-        '"Page"."ID"="Page_Terms"."PageID"'
-    )->innerJoin(
-        'TaxonomyTerm',
-        "\"Page_Terms\".\"TaxonomyTermID\"=\"TaxonomyTerm\".\"ID\" AND \"TaxonomyTerm\".\"ID\"='$tagID'"
-    );
+$pages = $this->Children()->filter(['Terms.ID' => $tagID]);
 ```
 
 This will work for a single term. You could add more complex SQL to get any from a set of terms or to exclude terms.
@@ -156,16 +149,9 @@ class TaxonomyDirectory extends Page
 {
     public function stageChildren($showAll = false)
     {
-        $termIDString = implode(',', $this->Terms()->map()->keys());
-
         return Page::get()
-            ->where("\"Page\".\"ID\" <> $this->ID")
-            ->innerJoin(
-                'BasePage_Terms',
-                '"Page"."ID"="BasePage_Terms"."BasePageID"')
-            ->innerJoin(
-                'TaxonomyTerm',
-                "\"BasePage_Terms\".\"TaxonomyTermID\"=\"TaxonomyTerm\".\"ID\" AND \"TaxonomyTerm\".\"ID\" IN ($termIDString)");
+            ->exclude('ID', $this->ID)
+            ->filter(['Terms.ID' => $this->Terms()->getIDList()]);
     }
 
     public function liveChildren($showAll = false, $onlyDeletedFromStage = false)
@@ -190,8 +176,9 @@ SilverStripe\Control\Director:
     'tag/$ID!': 'SilverStripe\Taxonomy\Controllers\TaxonomyDirectoryController'
 ```
 
-In this example, any request made to `/code/<TAG>` would render a page which contains a list of pages that uses the
-Taxonomy Term specified by `<TAG>`. You can override the provided template `TaxonomyDirectory.ss` in your own theme.
+In this example, any request made to `/tag/<TAG>` would render a page which contains a list of pages that uses the
+Taxonomy Term specified by `<TAG>`. You can override the provided template `TaxonomyDirectoryController.ss`
+in your own theme.
 
 Currently the following variables are available to the template;
 1. `Title` - the Taxonomy Term you are searching for
