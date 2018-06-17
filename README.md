@@ -2,6 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/silverstripe/silverstripe-taxonomy.svg)](http://travis-ci.org/silverstripe/silverstripe-taxonomy)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/silverstripe/silverstripe-taxonomy.svg)](https://scrutinizer-ci.com/g/silverstripe/silverstripe-taxonomy/?branch=master)
+[![SilverStripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)
 [![Code Coverage](https://img.shields.io/codecov/c/github/silverstripe/silverstripe-taxonomy.svg)](https://codecov.io/gh/silverstripe/silverstripe-taxonomy)
 
 ## Introduction
