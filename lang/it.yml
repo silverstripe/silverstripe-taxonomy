@@ -7,4 +7,13 @@ it:
     DeletePermissionLabel: 'Elimina un termine tassonomico e tutti i termini nidificati'
     EditPermissionLabel: 'Modifica un termine tassonomico e tutti i termini nidificati'
     PLURALNAME: 'Termini tassonomici'
+    PLURALS:
+      one: 'Un Termine tassonomico'
+      other: '{count} Termini tassonomici'
     SINGULARNAME: 'Termine tassonomico'
+  SilverStripe\Taxonomy\TaxonomyType:
+    PLURALNAME: 'Tipi Tassonomie'
+    PLURALS:
+      one: 'Un Tipo Tassonomia'
+      other: '{count} Tipi Tassonomie'
+    SINGULARNAME: 'Tipo Tassonomia'
