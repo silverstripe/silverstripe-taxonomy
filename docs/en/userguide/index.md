@@ -26,7 +26,7 @@ The Taxonomy Term is the equivalent of the taxonomy itself - it serves to provid
 
 To create a taxonomy, navigate to the **_Taxonomies_** section.
 
-The list that appears contains all existing taxonomies - there could be many in parallel. If the list is empty, you will want to create a Taxonomy Type first. To do so, navigate to the **_Taxonomy Types_** tab, click **_Add Taxonomy Type_**, specify the name (e.g. "News") and click **_Create_**
+The list that appears contains all existing taxonomies - there could be many in parallel. If the list is empty, you will want to create a Taxonomy Type first. To do so, navigate to the **_Taxonomy Types_** tab, click **_Add Taxonomy Type_**, specify the name (e.g. "News") and click **_Create_**.
 
 To create first layer of terms within the taxonomy, switch to the **_Taxonomy Terms_** tab. Click **_Add Taxonomy Term_** and this time create "National". Switch to the **_Children_** tab, and nest another term underneath: (e.g. "Weather"). You have just
 created a three-level hierarchy of "News > National > Weather".
@@ -49,6 +49,6 @@ the top-level item of the subtree to be removed.
 
 Site administrator can specify permissions around taxonomies. There are three permissions that can be set on groups:
 
-* **_Create a taxonomy term_**: allows adding new terms to existing taxonomies
+* **_Create a taxonomy term_**: allows adding new terms to existing taxonomies.
 * **_Delete a taxonomy term and all nested terms_**: allows to delete items recursively.
-* **_Edit a taxonomy term_**: allows members of the group to update the taxonomy details
+* **_Edit a taxonomy term_**: allows members of the group to update the taxonomy details.
