@@ -1,0 +1,19 @@
+sv:
+  SilverStripe\Taxonomy\TaxonomyAdmin:
+    MENUTITLE: Taxonomi
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    Category: Taxonomi-termer
+    CreatePermissionLabel: 'Skapa en taxonomi-term'
+    DeletePermissionLabel: 'Ta bort en taxonomi-term och alla under-termer'
+    EditPermissionLabel: 'Ändra en taxonomi-term'
+    PLURALNAME: Taxonomi-termer
+    PLURALS:
+      one: 'En taxonomi-term'
+      other: '{count} taxonomi-termer'
+    SINGULARNAME: Taxonomi-term
+  SilverStripe\Taxonomy\TaxonomyType:
+    PLURALNAME: Taxonomi-typer
+    PLURALS:
+      one: 'En taxonomi-typ'
+      other: '{count} taxonomi-typer'
+    SINGULARNAME: Taxonomi-typ

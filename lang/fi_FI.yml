@@ -1,4 +1,4 @@
-fi:
+fi_FI:
   SilverStripe\Taxonomy\TaxonomyAdmin:
     MENUTITLE: Taksonomiat
   SilverStripe\Taxonomy\TaxonomyTerm:

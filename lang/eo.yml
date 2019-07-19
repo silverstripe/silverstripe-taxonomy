@@ -7,4 +7,13 @@ eo:
     DeletePermissionLabel: 'Forigi taksonomian terminon kaj ĉiujn ingitajn terminojn'
     EditPermissionLabel: 'Redakti taksonomian terminon'
     PLURALNAME: 'Taksonomiaj terminoj'
+    PLURALS:
+      one: 'Unu taksonomia termino'
+      other: '{count} taksonomiaj terminoj'
     SINGULARNAME: 'Taksonomia termino'
+  SilverStripe\Taxonomy\TaxonomyType:
+    PLURALNAME: 'Taksonomiaj tipoj'
+    PLURALS:
+      one: 'Unu taksonomia tipo'
+      other: '{count} taksonomiaj tipoj'
+    SINGULARNAME: 'Taksonomia tipo'
