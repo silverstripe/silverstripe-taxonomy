@@ -201,5 +201,23 @@ An example for a template;
 
 ```
 
+#### Using a URL Segment
+The provided directory implementation has an option to use a URL-friendly field instead of `Name`. You can enable this in the above example by adding this to your project config `.yml`
+```yaml
+SilverStripe\Taxonomy\Controllers\TaxonomyDirectoryController:
+  lookup_relation_field: 'Terms.URLSegment'
+SilverStripe\Taxonomy\TaxonomyTerm:
+  extensions:
+    - SilverStripe\Taxonomy\Extensions\TaxonomyTermUrlExtension
+```
 
-Note: the default directory implementation assumes that you've setup the reverse relation specified by `BasePage`.  
+Note: the default directory implementation assumes that you've setup a relation called `Terms` in your `Page.php` as in the example above.
+
+If you're using a different class to `Page`, such as the cwp/cwp module which defines the `Terms` relation on the `BasePage` class you can specify the class using `directory_class` as below
+```yaml
+SilverStripe\Taxonomy\Controllers\TaxonomyDirectoryController:
+  directory_class: CWP\CWP\PageTypes\BasePage
+SilverStripe\Taxonomy\TaxonomyTerm:
+  extensions:
+    - SilverStripe\Taxonomy\Extensions\TaxonomyTermUrlExtension
+```

@@ -6,6 +6,7 @@ use Page;
 use PageController;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\SSViewer;
 
@@ -20,6 +21,19 @@ if (!class_exists(PageController::class)) {
  */
 class TaxonomyDirectoryController extends PageController
 {
+    /**
+     * The class (e.g. Page) that has a relation to TaxonomyTerms
+     * The name of the relation on this class should be defined in $lookup_relation_field
+     * @config
+     */
+    private static $directory_class = 'Page';
+
+    /**
+     * The name of the TaxonomyTerm relation and field to expect in the URL
+     * e.g. Terms.Name or Tags.URLSegment
+     * @config
+     */
+    private static $lookup_relation_field = 'Terms.Name';
 
     private static $allowed_actions = array(
         'index'
@@ -29,7 +43,9 @@ class TaxonomyDirectoryController extends PageController
     {
         $termString = $request->param('ID');
 
-        $pages = Page::get()->filter(['Terms.Name' => $termString]);
+        $field = $this->config()->get('lookup_relation_field');
+        $class = $this->config()->get('directory_class');
+        $pages = DataObject::get($class)->filter([$field => $termString]);
 
         return $this->customise(new ArrayData(array(
             'Title' => $termString,
