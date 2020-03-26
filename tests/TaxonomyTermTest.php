@@ -87,6 +87,10 @@ class TaxonomyTermTest extends SapphireTest
         //reload item from DB to see if the change was actually written to DB
         $tree2 = TaxonomyTerm::get()->byID($tree->ID);
 
-        $this->assertEquals('Food', $tree2->Type()->Name, 'A new child term should automatically get the parent\'s type');
+        $this->assertEquals(
+            'Food',
+            $tree2->Type()->Name,
+            'A new child term should automatically get the parent\'s type'
+        );
     }
 }
