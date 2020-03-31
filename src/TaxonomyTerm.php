@@ -147,6 +147,22 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
     }
 
     /**
+     * Set the "type" relationship for this item
+     *
+     * {@inheritDoc}
+     */
+    protected function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+        
+        // Write the parent's type to the current term
+        if ($this->Parent()->exists() && $this->Parent()->Type()->exists()) {
+            $this->TypeID = $this->Parent()->Type()->ID;
+        }
+    }
+
+
+    /**
      * Set the "type" relationship for children to that of the parent (recursively)
      *
      * {@inheritDoc}
@@ -154,11 +170,6 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
     public function onAfterWrite()
     {
         parent::onAfterWrite();
-
-        // Write the parent's type to the current term
-        if ($this->Parent()->exists() && $this->Parent()->Type()->exists()) {
-            $this->TypeID = $this->Parent()->Type()->ID;
-        }
 
         // Write the current term's type to all children
         foreach ($this->Children() as $term) {
