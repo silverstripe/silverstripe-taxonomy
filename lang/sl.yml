@@ -1,0 +1,23 @@
+sl:
+  SilverStripe\Taxonomy\TaxonomyAdmin:
+    MENUTITLE: Označevalci
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    Category: Oznake
+    CreatePermissionLabel: 'Ustvari oznako'
+    DeletePermissionLabel: 'Izbriši oznako in njej podrejene oznake'
+    EditPermissionLabel: 'Uredi oznako'
+    PLURALNAME: Oznake
+    PLURALS:
+      one: Oznaka
+      two: '{count} oznaki'
+      few: '{count} oznak'
+      other: '{count} oznak'
+    SINGULARNAME: Oznaka
+  SilverStripe\Taxonomy\TaxonomyType:
+    PLURALNAME: 'Tipi oznake'
+    PLURALS:
+      one: 'Tip oznake'
+      two: '{count} tipa oznak'
+      few: '{count} tipov oznak'
+      other: '{count} tipov oznak'
+    SINGULARNAME: 'Tip oznake'
