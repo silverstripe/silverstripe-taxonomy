@@ -154,7 +154,7 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
     protected function onBeforeWrite()
     {
         parent::onBeforeWrite();
-        
+
         // Write the parent's type to the current term
         if ($this->Parent()->exists() && $this->Parent()->Type()->exists()) {
             $this->TypeID = $this->Parent()->Type()->ID;
