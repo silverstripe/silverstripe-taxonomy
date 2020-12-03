@@ -64,7 +64,13 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         if ($this->getTaxonomy() !== $this) {
             $fields->removeByName('TypeID');
         }
+        
+        if (!TaxonomyType::get()->exists()) {
+            $this->TypeID = null;
 
+            $fields->removeByName('TypeID');
+        }
+        
         $childrenGrid = $fields->dataFieldByName('Children');
         if ($childrenGrid) {
             $deleteAction = $childrenGrid->getConfig()->getComponentByType(GridFieldDeleteAction::class);
