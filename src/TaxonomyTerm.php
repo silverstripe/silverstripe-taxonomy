@@ -2,6 +2,7 @@
 
 namespace SilverStripe\Taxonomy;
 
+use SilverStripe\ORM\HasManyList;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
@@ -16,6 +17,11 @@ use SilverStripe\Security\PermissionProvider;
  * Represents a single taxonomy term. Can be re-ordered in the CMS, and the default sorting is to use the order as
  * specified in the CMS.
  *
+ * @property string $Name
+ * @property int $ParentID
+ * @property int $Sort
+ * @property int $TypeID
+ * @method HasManyList|TaxonomyTerm[] Children()
  * @method TaxonomyTerm Parent()
  * @package taxonomy
  */
