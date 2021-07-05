@@ -23,6 +23,7 @@ use SilverStripe\Security\PermissionProvider;
  * @property int $TypeID
  * @method HasManyList|TaxonomyTerm[] Children()
  * @method TaxonomyTerm Parent()
+ * @method TaxonomyType Type()
  * @package taxonomy
  */
 class TaxonomyTerm extends DataObject implements PermissionProvider
@@ -58,6 +59,8 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         'Type.Name' => 'Type'
     );
 
+    private static $type_inheritance_enabled = true;
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
@@ -67,7 +70,7 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         $fields->removeByName('Sort');
 
         // Child taxonomy terms don't need to choose a type, it is inherited
-        if ($this->getTaxonomy() !== $this) {
+        if ($this->config()->get('type_inheritance_enabled') && $this->getTaxonomy() !== $this) {
             $fields->removeByName('TypeID');
         }
 
@@ -130,10 +133,20 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
      */
     public function getTaxonomyType()
     {
+        if (!$this->config()->get('type_inheritance_enabled')) {
+            if ($this->Type() && $this->Type()->exists()) {
+                return $this->Type()->Name;
+            }
+
+            return '';
+        }
+
         $taxonomy = $this->getTaxonomy();
+
         if ($taxonomy->Type() && $taxonomy->Type()->exists()) {
             return $taxonomy->Type()->Name;
         }
+
         return '';
     }
 
@@ -162,7 +175,11 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         parent::onBeforeWrite();
 
         // Write the parent's type to the current term
-        if ($this->Parent()->exists() && $this->Parent()->Type()->exists()) {
+        if (
+            $this->config()->get('type_inheritance_enabled')
+            && $this->Parent()->exists()
+            && $this->Parent()->Type()->exists()
+        ) {
             $this->TypeID = $this->Parent()->Type()->ID;
         }
     }
@@ -176,6 +193,10 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
     public function onAfterWrite()
     {
         parent::onAfterWrite();
+
+        if (!$this->config()->get('type_inheritance_enabled')) {
+            return;
+        }
 
         // Write the current term's type to all children
         foreach ($this->Children() as $term) {
