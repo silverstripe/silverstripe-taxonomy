@@ -28,7 +28,8 @@
     "autoload": {
         "psr-4": {
             "SilverStripe\\Taxonomy\\": "src/",
-            "SilverStripe\\Taxonomy\\Tests\\": "tests/"
+            "SilverStripe\\Taxonomy\\Tests\\": "tests/",
+            "SilverStripe\\Taxonomy\\Tests\\Behat\\Context\\": "tests/behat/src/"
         }
     },
     "extra": [],
