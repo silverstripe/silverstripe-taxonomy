@@ -12,7 +12,7 @@ class TaxonomyTermTest extends SapphireTest
 {
     protected static $fixture_file = 'TaxonomyTermTest.yml';
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // Type inheritance needs to be disabled while we generate our objects from our fixtures. Otherwise, all of
         // the Types will be written to our child Terms, and this will completely invalidate some of our test
