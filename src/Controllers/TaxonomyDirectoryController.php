@@ -20,7 +20,6 @@ if (!class_exists(PageController::class)) {
  */
 class TaxonomyDirectoryController extends PageController
 {
-
     private static $allowed_actions = array(
         'index'
     );
