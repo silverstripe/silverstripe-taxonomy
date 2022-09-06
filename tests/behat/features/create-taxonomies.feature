@@ -3,7 +3,7 @@ Feature: Create taxonomies
   I want to create and link taxonomies
 
   Background:
-    Given the "group" "EDITOR group" has permissions "CMS_ACCESS_LeftAndMain" and "TAXONOMYTERM_CREATE" and "TAXONOMYTERM_EDIT" and "TAXONOMYTERM_DELETE"
+    Given the "group" "EDITOR" has permissions "Access to 'Taxonomies' section" and "TAXONOMYTERM_CREATE" and "TAXONOMYTERM_EDIT" and "TAXONOMYTERM_DELETE"
 
   Scenario: Create taxonomy terms, types and link them together
     # Only admins can create Taxonomy Types
@@ -19,7 +19,7 @@ Feature: Create taxonomies
     # Login as editor to create taxonomy term
     When I go to "/Security/login"
     And I press the "Log in as someone else" button
-    And I am logged in with "EDITOR" permissions
+    And I am logged in as a member of "EDITOR" group
     When I go to "/admin/taxonomy"
     Then I should see the ".current[aria-controls='Taxonomy_Terms']" element
     When I press the "Add Taxonomy Term" button
