@@ -1,5 +1,0 @@
-mappings:
-  TaxonomyAdmin: SilverStripe\Taxonomy\TaxonomyAdmin
-  TaxonomyTerm: SilverStripe\Taxonomy\TaxonomyTerm
-  TaxonomyType: SilverStripe\Taxonomy\TaxonomyType
-  TaxonomyTermTest: SilverStripe\Taxonomy\TaxonomyTermTest
