@@ -21,7 +21,8 @@ Feature: Create taxonomies
     And I press the "Log in as someone else" button
     And I am logged in with "EDITOR" permissions
     When I go to "/admin/taxonomy"
-    Then I should see the ".current[aria-controls='Taxonomy_Terms']" element
+    # Check we're in the taxonomy terms tab by default
+    Then I should see the "li.current a.active[title='Taxonomy Terms']" element
     When I press the "Add Taxonomy Term" button
     And I fill in "Name" with "My taxonomy term"
     And I select "My taxonomy type" from "Type"
