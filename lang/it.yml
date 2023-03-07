@@ -10,10 +10,12 @@ it:
     PLURALS:
       one: 'Un Termine tassonomico'
       other: '{count} Termini tassonomici'
+      many: '{count} Termini tassonomici'
     SINGULARNAME: 'Termine tassonomico'
   SilverStripe\Taxonomy\TaxonomyType:
     PLURALNAME: 'Tipi Tassonomie'
     PLURALS:
       one: 'Un Tipo Tassonomia'
       other: '{count} Tipi Tassonomie'
+      many: '{count} Tipi Tassonomie'
     SINGULARNAME: 'Tipo Tassonomia'

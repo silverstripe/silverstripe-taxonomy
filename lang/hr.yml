@@ -8,3 +8,6 @@ hr:
     EditPermissionLabel: 'Uredi pojam taksonomije'
     PLURALNAME: 'Pojmovi taksonomije'
     SINGULARNAME: 'Pojam taksonomije'
+  SilverStripe\Taxonomy\TaxonomyType:
+    PLURALNAME: 'Tipovi taksonomija'
+    SINGULARNAME: 'Tipovi taksonomije'
