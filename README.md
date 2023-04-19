@@ -7,25 +7,15 @@
 
 The Taxonomy module add the capability to add and edit simple taxonomies within Silverstripe.
 
-## Requirements
-
- * Silverstripe 4.0+
- * Silverstripe Admin Module 1.0.2+
- 
- **Note:** this version is compatible with Silverstripe 4. For Silverstripe 3, please see [the 1.x release line](https://github.com/silverstripe/silverstripe-taxonomy/tree/1.2).
-
 ## Features
 
 Create multiple taxonomies with any number of nested terms.
 
 ## Installation
 
+```sh
+composer require silverstripe/taxonomy
 ```
-$ composer require silverstripe/taxonomy
-```
-Afterwards run `/dev/build?flush=all` to rebuild your database.
-
-For usage instructions see [user manual](docs/en/userguide/index.md).
 
 ## Contributing
 
