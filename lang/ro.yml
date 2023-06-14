@@ -1,0 +1,4 @@
+ro:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Pagini
+    has_one_Parent: Părinte

@@ -11,9 +11,13 @@ fi_FI:
       one: Taksonomiatermi
       other: '{count} Taksonomiatermiä'
     SINGULARNAME: 'Taksonomia nimitys'
+    belongs_many_many_Pages: Sivut
+    db_Name: Nimi
+    has_one_Type: Tyyppi
   SilverStripe\Taxonomy\TaxonomyType:
     PLURALNAME: Taksonomiatyypit
     PLURALS:
       one: Taksonomiatyyppi
       other: '{count} Taksonomiatyyppiä'
     SINGULARNAME: Taksonomiatyyppi
+    db_Name: Nimi

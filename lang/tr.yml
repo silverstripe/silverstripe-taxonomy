@@ -1,0 +1,6 @@
+tr:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Sayfalar
+    db_Name: Ad
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Ad

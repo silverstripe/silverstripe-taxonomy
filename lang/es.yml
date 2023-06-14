@@ -1,0 +1,9 @@
+es:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Páginas
+    db_Name: Nombre
+    db_Sort: Ordenar
+    has_one_Parent: Padre
+    has_one_Type: Tipo
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Nombre

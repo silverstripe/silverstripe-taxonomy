@@ -8,3 +8,9 @@ zh:
     EditPermissionLabel: 编辑一个分类术语
     PLURALNAME: 分类术语
     SINGULARNAME: 分类术语
+    belongs_many_many_Pages: 页面
+    db_Name: 姓名
+    has_one_Parent: 父
+    has_one_Type: 类型
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: 姓名

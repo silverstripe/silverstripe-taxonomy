@@ -1,0 +1,7 @@
+bg:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Страници
+    db_Name: Име
+    has_one_Type: Тип
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Име

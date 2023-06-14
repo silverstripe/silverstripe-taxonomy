@@ -1,0 +1,6 @@
+af:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: CMSPagesController
+    db_Name: Naam
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Naam

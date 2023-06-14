@@ -1,0 +1,6 @@
+is:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Síður
+    db_Name: Nafn
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Nafn

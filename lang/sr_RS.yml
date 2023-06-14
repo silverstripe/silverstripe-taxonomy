@@ -1,0 +1,5 @@
+sr_RS:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    db_Name: Име
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Име

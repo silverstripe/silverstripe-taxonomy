@@ -1,0 +1,6 @@
+sr_RS@latin:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Stranice
+    db_Name: Ime
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Ime
