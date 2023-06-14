@@ -1,0 +1,9 @@
+fr:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Pages
+    db_Name: Nom
+    db_Sort: Tri
+    has_one_Parent: Parent
+    has_one_Type: Type
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Nom

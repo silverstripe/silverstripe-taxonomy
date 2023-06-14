@@ -1,0 +1,5 @@
+lv:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    db_Name: Nosaukms
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Nosaukms

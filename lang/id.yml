@@ -1,0 +1,8 @@
+id:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Laman
+    db_Name: Nama
+    has_one_Parent: Induk
+    has_one_Type: Tipe
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Nama

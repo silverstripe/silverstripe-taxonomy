@@ -1,0 +1,6 @@
+th:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: หน้า
+    db_Name: ชื่อ
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: ชื่อ

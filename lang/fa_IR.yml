@@ -1,0 +1,9 @@
+fa_IR:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: صفحات
+    db_Name: نام
+    db_Sort: مرتب‌سازی
+    has_one_Parent: والد
+    has_one_Type: نوع
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: نام

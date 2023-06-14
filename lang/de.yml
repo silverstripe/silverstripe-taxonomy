@@ -1,0 +1,9 @@
+de:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Seiten
+    db_Name: Name
+    db_Sort: Sortierung
+    has_one_Parent: Übergeordnet
+    has_one_Type: Typ
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Name

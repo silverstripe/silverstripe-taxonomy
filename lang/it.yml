@@ -12,6 +12,11 @@ it:
       other: '{count} Termini tassonomici'
       many: '{count} Termini tassonomici'
     SINGULARNAME: 'Termine tassonomico'
+    belongs_many_many_Pages: Pagine
+    db_Name: Nome
+    db_Sort: Ordine
+    has_one_Parent: Parente
+    has_one_Type: Tipo
   SilverStripe\Taxonomy\TaxonomyType:
     PLURALNAME: 'Tipi Tassonomie'
     PLURALS:
@@ -19,3 +24,4 @@ it:
       other: '{count} Tipi Tassonomie'
       many: '{count} Tipi Tassonomie'
     SINGULARNAME: 'Tipo Tassonomia'
+    db_Name: Nome
