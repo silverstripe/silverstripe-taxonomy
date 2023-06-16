@@ -1,0 +1,6 @@
+gl_ES:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Páxinas
+    db_Name: Nome
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Nome

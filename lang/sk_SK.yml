@@ -1,0 +1,4 @@
+sk_SK:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    db_Sort: Usporiadanie
+    has_one_Parent: Rodič

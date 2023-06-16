@@ -1,0 +1,5 @@
+ca:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    db_Name: Nom
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Nom

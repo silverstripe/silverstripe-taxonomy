@@ -1,0 +1,6 @@
+ja_JP:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: ページ
+    db_Name: 名前
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: 名前

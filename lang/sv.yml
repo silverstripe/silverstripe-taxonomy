@@ -11,9 +11,15 @@ sv:
       one: 'En taxonomi-term'
       other: '{count} taxonomi-termer'
     SINGULARNAME: Taxonomi-term
+    belongs_many_many_Pages: Sidor
+    db_Name: Namn
+    db_Sort: Sortera
+    has_one_Parent: Förälder
+    has_one_Type: Typ
   SilverStripe\Taxonomy\TaxonomyType:
     PLURALNAME: Taxonomi-typer
     PLURALS:
       one: 'En taxonomi-typ'
       other: '{count} taxonomi-typer'
     SINGULARNAME: Taxonomi-typ
+    db_Name: Namn

@@ -8,6 +8,11 @@ hr:
     EditPermissionLabel: 'Uredi pojam taksonomije'
     PLURALNAME: 'Pojmovi taksonomije'
     SINGULARNAME: 'Pojam taksonomije'
+    belongs_many_many_Pages: Stranice
+    db_Name: Naziv
+    has_one_Parent: Roditelj
+    has_one_Type: Tip
   SilverStripe\Taxonomy\TaxonomyType:
     PLURALNAME: 'Tipovi taksonomija'
     SINGULARNAME: 'Tipovi taksonomije'
+    db_Name: Naziv

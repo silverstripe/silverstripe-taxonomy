@@ -1,0 +1,9 @@
+sk:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Stránky
+    db_Name: Meno
+    db_Sort: Usporiadanie
+    has_one_Parent: 'Komentovaný príspevok'
+    has_one_Type: Typ
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Meno

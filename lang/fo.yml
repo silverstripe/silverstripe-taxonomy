@@ -1,0 +1,5 @@
+fo:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    db_Name: Navn
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Navn
