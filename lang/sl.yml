@@ -13,6 +13,9 @@ sl:
       few: '{count} oznak'
       other: '{count} oznak'
     SINGULARNAME: Oznaka
+    belongs_many_many_Pages: 'Seznam strani'
+    db_Name: Ime
+    has_one_Type: Tip
   SilverStripe\Taxonomy\TaxonomyType:
     PLURALNAME: 'Tipi oznake'
     PLURALS:
@@ -21,3 +24,4 @@ sl:
       few: '{count} tipov oznak'
       other: '{count} tipov oznak'
     SINGULARNAME: 'Tip oznake'
+    db_Name: Ime

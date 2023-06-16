@@ -1,0 +1,8 @@
+pl_PL:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Strony
+    db_Name: Nazwa
+    has_one_Parent: Rodzic
+    has_one_Type: Typ
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Nazwa

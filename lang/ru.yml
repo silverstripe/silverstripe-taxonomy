@@ -8,3 +8,10 @@ ru:
     EditPermissionLabel: 'Редактировать термин таксономии'
     PLURALNAME: 'Термины таксономии'
     SINGULARNAME: 'Термин таксономии'
+    belongs_many_many_Pages: Страницы
+    db_Name: Название
+    db_Sort: Сортировать
+    has_one_Parent: Родительская
+    has_one_Type: Тип
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Название

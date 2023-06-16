@@ -1,0 +1,6 @@
+pt_BR:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Páginas
+    db_Name: Nome
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Nome

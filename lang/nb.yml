@@ -1,0 +1,6 @@
+nb:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Sider
+    db_Name: Navn
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Navn

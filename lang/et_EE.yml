@@ -1,0 +1,6 @@
+et_EE:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Lehed
+    db_Name: Nimi
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Nimi

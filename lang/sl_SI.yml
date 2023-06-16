@@ -1,0 +1,5 @@
+sl_SI:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    db_Name: Ime
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Ime

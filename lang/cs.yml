@@ -1,0 +1,7 @@
+cs:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Stránky
+    db_Name: Jméno
+    has_one_Type: Typ
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Jméno
