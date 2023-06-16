@@ -1,0 +1,4 @@
+hu:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Oldalak
+    has_one_Parent: Szülő

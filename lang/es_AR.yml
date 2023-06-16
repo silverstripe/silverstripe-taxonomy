@@ -1,0 +1,5 @@
+es_AR:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    db_Name: Nombre
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Nombre

@@ -11,9 +11,15 @@ eo:
       one: 'Unu taksonomia termino'
       other: '{count} taksonomiaj terminoj'
     SINGULARNAME: 'Taksonomia termino'
+    belongs_many_many_Pages: Paĝoj
+    db_Name: Nomo
+    db_Sort: Ordigi
+    has_one_Parent: Patra
+    has_one_Type: Tipo
   SilverStripe\Taxonomy\TaxonomyType:
     PLURALNAME: 'Taksonomiaj tipoj'
     PLURALS:
       one: 'Unu taksonomia tipo'
       other: '{count} taksonomiaj tipoj'
     SINGULARNAME: 'Taksonomia tipo'
+    db_Name: Nomo

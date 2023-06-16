@@ -8,3 +8,4 @@ el:
     EditPermissionLabel: 'Επεξεργασία όρου'
     PLURALNAME: 'Όροι Ταξινόμησης'
     SINGULARNAME: 'Όρος Ταξινόμησης'
+    belongs_many_many_Pages: Σελίδες

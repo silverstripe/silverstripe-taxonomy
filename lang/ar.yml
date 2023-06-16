@@ -8,3 +8,9 @@ ar:
     EditPermissionLabel: 'تحرير مصطلح تصنيف'
     PLURALNAME: 'مصطلحات تصنيف'
     SINGULARNAME: 'مصطلح تصنيف'
+    belongs_many_many_Pages: الصفحات
+    db_Name: الاسم
+    has_one_Parent: والد
+    has_one_Type: النوع
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: الاسم

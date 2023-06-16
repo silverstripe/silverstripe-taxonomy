@@ -1,0 +1,5 @@
+az:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    db_Name: Ad
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Ad

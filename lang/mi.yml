@@ -8,3 +8,9 @@ mi:
     EditPermissionLabel: 'Whakatikahia he kupu pūnaha whakarōpū'
     PLURALNAME: 'Ngā Kupu Pūnaha Whakarōpū'
     SINGULARNAME: 'Kupu Pūnaha Whakarōpū'
+    belongs_many_many_Pages: 'Ngā Whārangi'
+    db_Name: Ingoa
+    has_one_Parent: Matua
+    has_one_Type: Momo
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Ingoa

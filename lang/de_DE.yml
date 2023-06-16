@@ -1,0 +1,7 @@
+de_DE:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Seiten
+    db_Name: Name
+    has_one_Type: Typ
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Name

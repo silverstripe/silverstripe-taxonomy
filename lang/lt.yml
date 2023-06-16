@@ -1,0 +1,7 @@
+lt:
+  SilverStripe\Taxonomy\TaxonomyTerm:
+    belongs_many_many_Pages: Puslapiai
+    db_Name: Pavadinimas
+    has_one_Parent: Priklauso
+  SilverStripe\Taxonomy\TaxonomyType:
+    db_Name: Pavadinimas
