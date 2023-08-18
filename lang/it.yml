@@ -8,9 +8,9 @@ it:
     EditPermissionLabel: 'Modifica un termine tassonomico e tutti i termini nidificati'
     PLURALNAME: 'Termini tassonomici'
     PLURALS:
+      many: '{count} Termini tassonomici'
       one: 'Un Termine tassonomico'
       other: '{count} Termini tassonomici'
-      many: '{count} Termini tassonomici'
     SINGULARNAME: 'Termine tassonomico'
     belongs_many_many_Pages: Pagine
     db_Name: Nome
@@ -20,8 +20,8 @@ it:
   SilverStripe\Taxonomy\TaxonomyType:
     PLURALNAME: 'Tipi Tassonomie'
     PLURALS:
+      many: '{count} Tipi Tassonomie'
       one: 'Un Tipo Tassonomia'
       other: '{count} Tipi Tassonomie'
-      many: '{count} Tipi Tassonomie'
     SINGULARNAME: 'Tipo Tassonomia'
     db_Name: Nome
