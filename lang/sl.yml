@@ -8,10 +8,10 @@ sl:
     EditPermissionLabel: 'Uredi oznako'
     PLURALNAME: Oznake
     PLURALS:
-      one: Oznaka
-      two: '{count} oznaki'
       few: '{count} oznak'
+      one: Oznaka
       other: '{count} oznak'
+      two: '{count} oznaki'
     SINGULARNAME: Oznaka
     belongs_many_many_Pages: 'Seznam strani'
     db_Name: Ime
@@ -19,9 +19,9 @@ sl:
   SilverStripe\Taxonomy\TaxonomyType:
     PLURALNAME: 'Tipi oznake'
     PLURALS:
-      one: 'Tip oznake'
-      two: '{count} tipa oznak'
       few: '{count} tipov oznak'
+      one: 'Tip oznake'
       other: '{count} tipov oznak'
+      two: '{count} tipa oznak'
     SINGULARNAME: 'Tip oznake'
     db_Name: Ime
