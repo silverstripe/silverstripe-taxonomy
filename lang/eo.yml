@@ -14,6 +14,7 @@ eo:
     belongs_many_many_Pages: Paĝoj
     db_Name: Nomo
     db_Sort: Ordigi
+    has_many_Children: Infanoj
     has_one_Parent: Patra
     has_one_Type: Tipo
   SilverStripe\Taxonomy\TaxonomyType:
