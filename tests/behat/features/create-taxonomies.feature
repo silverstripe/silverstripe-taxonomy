@@ -38,6 +38,8 @@ Feature: Create taxonomies
     And I press the "Create" button
     When I follow "My taxonomy term"
     And I click the "Children" CMS tab
-    Then I should see "My child taxonomy term"
+    Then I should see "My child taxonomy term" in the "#Form_ItemEditForm_Children" element
     When I follow "Taxonomy Terms"
-    Then I should not see "My child taxonomy term"
+    # This needs a different selector, because it's in a different form.
+    # The Item in "#Form_EditForm_SilverStripe-Taxonomy-TaxonomyTerm" is a parent for "Children" CMS tab
+    Then I should not see "My child taxonomy term" in the "#Form_EditForm_SilverStripe-Taxonomy-TaxonomyTerm" element
