@@ -3,6 +3,7 @@ nl:
     belongs_many_many_Pages: 'Pagina''s'
     db_Name: Naam
     db_Sort: Volgorde
+    has_one_Parent: Bovenliggende
     has_one_Type: 'Soort veld'
   SilverStripe\Taxonomy\TaxonomyType:
     db_Name: Naam
