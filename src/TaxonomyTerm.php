@@ -21,10 +21,10 @@ use SilverStripe\Security\PermissionProvider;
  * @property int $ParentID
  * @property int $Sort
  * @property int $TypeID
- * @method HasManyList|TaxonomyTerm[] Children()
+ * @package taxonomy
+ * @method HasManyList<TaxonomyTerm> Children()
  * @method TaxonomyTerm Parent()
  * @method TaxonomyType Type()
- * @package taxonomy
  */
 class TaxonomyTerm extends DataObject implements PermissionProvider
 {
