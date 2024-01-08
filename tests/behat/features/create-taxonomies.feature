@@ -25,7 +25,9 @@ Feature: Create taxonomies
     Then I should see the "li.current a.active[title='Taxonomy Terms']" element
     When I press the "Add Taxonomy Term" button
     And I fill in "Name" with "My taxonomy term"
-    And I select "My taxonomy type" from "Type"
+    And I fill in "Form_ItemEditForm_TypeID__input" with "My taxonomy type"
+    And I wait for 3 seconds
+    And I press the "Enter" key globally
     And I press the "Create" button
     When I follow "Taxonomy Terms"
     Then I should see "My taxonomy term"
