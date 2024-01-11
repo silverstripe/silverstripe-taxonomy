@@ -160,7 +160,6 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         parent::onBeforeDelete();
 
         foreach ($this->Children() as $term) {
-            /** @var TaxonomyTerm $term */
             $term->delete();
         }
     }
@@ -200,7 +199,6 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
 
         // Write the current term's type to all children
         foreach ($this->Children() as $term) {
-            /** @var TaxonomyTerm $term */
             $term->TypeID = $this->Type()->ID;
             $term->write();
         }
