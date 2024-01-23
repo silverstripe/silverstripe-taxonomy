@@ -17,6 +17,8 @@ if (!class_exists(PageController::class)) {
  * Class TaxonomyDirectoryController
  *
  * Controller for returning a list of pages tagged with a specific Taxonomy Term
+ *
+ * @extends PageController<Page>
  */
 class TaxonomyDirectoryController extends PageController
 {
