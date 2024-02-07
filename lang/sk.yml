@@ -1,9 +1,30 @@
 sk:
+  SilverStripe\Taxonomy\TaxonomyAdmin:
+    MENUTITLE: Taxonómie
   SilverStripe\Taxonomy\TaxonomyTerm:
+    Category: 'Termíny taxonómie'
+    CreatePermissionLabel: 'Vytvoriť termín taxonómie'
+    DeletePermissionLabel: 'Odstrániť termín taxonómie a všetky vnorené termíny'
+    EditPermissionLabel: 'Upraviť termín taxonómie'
+    PLURALNAME: 'Termíny taxonómie'
+    PLURALS:
+      few: '{count} termíny taxonómie'
+      many: '{count} termínov taxonómie'
+      one: 'Termín taxonómie'
+      other: '{count} termínov taxonómie'
+    SINGULARNAME: 'Termín taxonómie'
     belongs_many_many_Pages: Stránky
-    db_Name: Meno
-    db_Sort: Usporiadanie
-    has_one_Parent: 'Komentovaný príspevok'
+    db_Name: Názov
+    db_Sort: Zoradiť
+    has_many_Children: Potomkovia
+    has_one_Parent: Rodič
     has_one_Type: Typ
   SilverStripe\Taxonomy\TaxonomyType:
-    db_Name: Meno
+    PLURALNAME: 'Typy taxonómie'
+    PLURALS:
+      few: '{count} typy taxonómie'
+      many: '{count} typov taxonómie'
+      one: 'Typ taxonómie'
+      other: '{count} typov taxonómie'
+    SINGULARNAME: 'Typ taxonómie'
+    db_Name: Názov
