@@ -1,6 +1,6 @@
 nl:
   SilverStripe\Taxonomy\TaxonomyTerm:
-    belongs_many_many_Pages: 'Pagina''s'
+    belongs_many_many_Pages: "Pagina's"
     db_Name: Naam
     db_Sort: Volgorde
     has_one_Parent: Bovenliggende
