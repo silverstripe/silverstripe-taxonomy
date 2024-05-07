@@ -2,6 +2,7 @@ pl:
   SilverStripe\Taxonomy\TaxonomyTerm:
     belongs_many_many_Pages: Strony
     db_Name: Nazwa
+    db_Sort: Sortuj
     has_one_Type: 'Rodzaj strony'
   SilverStripe\Taxonomy\TaxonomyType:
     db_Name: Nazwa
