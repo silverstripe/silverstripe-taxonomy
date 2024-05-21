@@ -155,7 +155,7 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
      *
      * {@inheritDoc}
      */
-    public function onBeforeDelete()
+    protected function onBeforeDelete()
     {
         parent::onBeforeDelete();
 
@@ -189,7 +189,7 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
      *
      * {@inheritDoc}
      */
-    public function onAfterWrite()
+    protected function onAfterWrite()
     {
         parent::onAfterWrite();
 
