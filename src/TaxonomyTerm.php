@@ -2,15 +2,21 @@
 
 namespace SilverStripe\Taxonomy;
 
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\FormField;
+use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\ORM\HasManyList;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\NumericField;
+use SilverStripe\Forms\SearchableMultiDropdownField;
 use SilverStripe\Security\Permission;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBForeignKey;
 use SilverStripe\Security\PermissionProvider;
 
 /**
@@ -63,33 +69,33 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function (FieldList $fields) {
+            // For now moving taxonomy terms is not supported. We also want to entirely rebuild the Children field.
+            $fields->removeByName(['ParentID', 'Sort', 'Children']);
 
-        // For now moving taxonomy terms is not supported.
-        $fields->removeByName('ParentID');
-        $fields->removeByName('Sort');
+            // Child taxonomy terms don't need to choose a type, it is inherited
+            if ($this->config()->get('type_inheritance_enabled') && $this->getTaxonomy() !== $this) {
+                $fields->removeByName('TypeID');
+            }
 
-        // Child taxonomy terms don't need to choose a type, it is inherited
-        if ($this->config()->get('type_inheritance_enabled') && $this->getTaxonomy() !== $this) {
-            $fields->removeByName('TypeID');
-        }
-
-        $childrenGrid = $fields->dataFieldByName('Children');
-        if ($childrenGrid) {
-            $deleteAction = $childrenGrid->getConfig()->getComponentByType(GridFieldDeleteAction::class);
-            $addExistingAutocompleter = $childrenGrid
-                ->getConfig()
-                ->getComponentByType(GridFieldAddExistingAutocompleter::class);
-
-            $childrenGrid->getConfig()->removeComponent($addExistingAutocompleter);
-            $childrenGrid->getConfig()->removeComponent($deleteAction);
-            $childrenGrid->getConfig()->addComponent(new GridFieldDeleteAction(false));
+            $childrenConfig = GridFieldConfig_RelationEditor::create();
+            $childrenGrid = GridField::create(
+                'Children',
+                $this->fieldLabel('Children'),
+                $this->Children(),
+                $childrenConfig
+            );
+            $deleteAction = $childrenConfig->getComponentByType(GridFieldDeleteAction::class);
+            $addExistingAutocompleter = $childrenConfig->getComponentByType(GridFieldAddExistingAutocompleter::class);
+            $childrenConfig->removeComponent($addExistingAutocompleter);
+            $childrenConfig->removeComponent($deleteAction);
+            $childrenConfig->addComponent(GridFieldDeleteAction::create(false));
 
             // Setup sorting of TaxonomyTerm siblings, and fall back to a manual NumericField if no sorting is possible
             if (class_exists(GridFieldOrderableRows::class)) {
-                $childrenGrid->getConfig()->addComponent(GridFieldOrderableRows::create('Sort'));
+                $childrenConfig->addComponent(GridFieldOrderableRows::create('Sort'));
             } elseif (class_exists(GridFieldSortableRows::class)) {
-                $childrenGrid->getConfig()->addComponent(new GridFieldSortableRows('Sort'));
+                $childrenConfig->addComponent(GridFieldSortableRows::create('Sort'));
             } else {
                 $fields->addFieldToTab(
                     'Root.Main',
@@ -99,9 +105,41 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
                         )
                 );
             }
-        }
+            $fields->addFieldToTab('Root.Children', $childrenGrid);
+        });
 
-        return $fields;
+        return parent::getCMSFields();
+    }
+
+    public function scaffoldFormFieldForHasMany(
+        string $relationName,
+        ?string $fieldTitle,
+        DataObject $ownerRecord,
+        bool &$includeInOwnTab
+    ): FormField {
+        $includeInOwnTab = false;
+        return $this->scaffoldFormFieldForManyRelation($relationName, $fieldTitle);
+    }
+
+    public function scaffoldFormFieldForManyMany(
+        string $relationName,
+        ?string $fieldTitle,
+        DataObject $ownerRecord,
+        bool &$includeInOwnTab
+    ): FormField {
+        $includeInOwnTab = false;
+        return $this->scaffoldFormFieldForManyRelation($relationName, $fieldTitle);
+    }
+
+    private function scaffoldFormFieldForManyRelation(string $relationName, ?string $fieldTitle): FormField
+    {
+        $list = static::get();
+        $field = SearchableMultiDropdownField::create($relationName, $fieldTitle, $list, labelField: 'Name');
+        // Use the same lazyload threshold has_one relations use
+        $threshold = DBForeignKey::config()->get('dropdown_field_threshold');
+        $overThreshold = $list->count() > $threshold;
+        $field->setIsLazyLoaded($overThreshold)->setLazyLoadLimit($threshold);
+        return $field;
     }
 
     /**
