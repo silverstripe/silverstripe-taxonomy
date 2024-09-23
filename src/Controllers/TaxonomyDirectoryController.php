@@ -5,8 +5,8 @@ namespace SilverStripe\Taxonomy\Controllers;
 use Page;
 use PageController;
 use SilverStripe\Control\HTTPRequest;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\List\ArrayList;
+use SilverStripe\Model\ArrayData;
 use SilverStripe\View\SSViewer;
 
 if (!class_exists(PageController::class)) {
