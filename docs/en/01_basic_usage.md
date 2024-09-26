@@ -40,7 +40,7 @@ class MyModel extends DataObject
 }
 ```
 
-Run a `dev/build?flush=all` and you'll be able to add taxonomy terms to your record - but now you need to create some terms! See [the userhelp documentation](https://userhelp.silverstripe.org/en/optional_features/taxonomies/) for information about functionality from a content author perspective.
+Run `sake db:build --flush` and you'll be able to add taxonomy terms to your record - but now you need to create some terms! See [the userhelp documentation](https://userhelp.silverstripe.org/en/optional_features/taxonomies/) for information about functionality from a content author perspective.
 
 ## Filtering by type
 
