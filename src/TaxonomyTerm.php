@@ -60,12 +60,20 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
 
     private static $default_sort = 'Sort';
 
+    private static string $sort_field = 'Sort';
+
     private static $summary_fields = array(
         'Name' => 'Name',
         'Type.Name' => 'Type'
     );
 
     private static $type_inheritance_enabled = true;
+
+    /**
+     * Css class attached to icons in a CMSMain tree. Also supports font-icon set.
+     * Overrides cms_icon for most purposes if set on the same class
+     */
+    private static string $cms_icon_class = 'font-icon-tag';
 
     public function getCMSFields()
     {
