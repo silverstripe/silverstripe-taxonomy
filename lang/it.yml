@@ -15,6 +15,7 @@ it:
     belongs_many_many_Pages: Pagine
     db_Name: Nome
     db_Sort: Ordine
+    has_many_Children: Figli
     has_one_Parent: Parente
     has_one_Type: Tipo
   SilverStripe\Taxonomy\TaxonomyType:
