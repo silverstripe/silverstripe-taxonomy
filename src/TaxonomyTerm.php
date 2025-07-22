@@ -58,6 +58,10 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         'TaxonomyName' => 'Text'
     );
 
+    private static array $indexes = [
+        'Name' => true,
+    ];
+
     private static $default_sort = 'Sort';
 
     private static string $sort_field = 'Sort';
