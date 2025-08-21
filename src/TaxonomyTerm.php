@@ -149,8 +149,11 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
         $field = SearchableMultiDropdownField::create($relationName, $fieldTitle, $list, labelField: 'Name');
         // Use the same lazyload threshold has_one relations use
         $threshold = DBForeignKey::config()->get('dropdown_field_threshold');
-        $overThreshold = $list->count() > $threshold;
-        $field->setIsLazyLoaded($overThreshold)->setLazyLoadLimit($threshold);
+        $overThreshold = $threshold === 0 || $list->setUseCache(true)->count() > $threshold;
+        $field->setIsLazyLoaded($overThreshold);
+        if ($threshold > 0) {
+            $field->setLazyLoadLimit($threshold);
+        }
         return $field;
     }
 
