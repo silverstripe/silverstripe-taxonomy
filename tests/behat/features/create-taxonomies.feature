@@ -10,7 +10,7 @@ Feature: Create taxonomies
     Given I am logged in with "ADMIN" permissions
     When I go to "/admin/taxonomy"
     When I click the "Taxonomy Types" CMS tab
-    When I press the "Add Taxonomy Type" button
+    When I press the "Add new Taxonomy Type" button
     And I fill in "Name" with "My taxonomy type"
     And I press the "Create" button
     When I follow "Taxonomy Types"
@@ -23,7 +23,7 @@ Feature: Create taxonomies
     When I go to "/admin/taxonomy"
     # Check we're in the taxonomy terms tab by default
     Then I should see the "li.current a.active[title='Taxonomy Terms']" element
-    When I press the "Add Taxonomy Term" button
+    When I press the "Add new Taxonomy Term" button
     And I fill in "Name" with "My taxonomy term"
     And I fill in "Form_ItemEditForm_TypeID__input" with "My taxonomy type"
     And I wait for 3 seconds
@@ -35,7 +35,7 @@ Feature: Create taxonomies
     # Create child term
     When I click the "Edit" button in the "SilverStripe-Taxonomy-TaxonomyTerm" gridfield for the "My taxonomy term" row
     When I click the "Children" CMS tab
-    When I press the "Add Taxonomy Term" button
+    When I press the "Add new Taxonomy Term" button
     And I fill in "Name" with "My child taxonomy term"
     And I press the "Create" button
     When I follow "My taxonomy term"

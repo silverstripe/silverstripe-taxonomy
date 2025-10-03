@@ -28,9 +28,9 @@ The Taxonomy Term is the equivalent of the taxonomy itself - it serves to provid
 
 To create a taxonomy, navigate to the "Taxonomies" section.
 
-The list that appears contains all existing taxonomies - there could be many in parallel. If the list is empty, you will want to create a Taxonomy Type first. To do so, navigate to the "Taxonomy Types" tab, click "Add Taxonomy Type", specify the name (e.g. "News") and click "Create".
+The list that appears contains all existing taxonomies - there could be many in parallel. If the list is empty, you will want to create a Taxonomy Type first. To do so, navigate to the "Taxonomy Types" tab, click "Add new Taxonomy Type", specify the name (e.g. "News") and click "Create".
 
-To create first layer of terms within the taxonomy, switch to the "Taxonomy Terms" tab. Click "Add Taxonomy Term" and this time create "National". Switch to the "Children" tab, and nest another term underneath: (e.g. "Weather"). You have just
+To create first layer of terms within the taxonomy, switch to the "Taxonomy Terms" tab. Click "Add new Taxonomy Term" and this time create "National". Switch to the "Children" tab, and nest another term underneath: (e.g. "Weather"). You have just
 created a three-level hierarchy of "News > National > Weather".
 
 ![Example of taxonomy](_images/taxonomies-terms.jpg)
