@@ -16,6 +16,7 @@ sl:
     belongs_many_many_Pages: 'Seznam strani'
     db_Name: Ime
     db_Sort: Razvrščanje
+    has_many_Children: Podoznake
     has_one_Parent: 'Nadrejeno pravilo'
     has_one_Type: Tip
   SilverStripe\Taxonomy\TaxonomyType:
