@@ -1,0 +1,14 @@
+{
+    "status": 422,
+    "body": {
+        "status": "error",
+        "errors": [
+            {
+                "type": "error",
+                "code": 422,
+                "value": "\"Name\" is required",
+                "field": "Name"
+            }
+        ]
+    }
+}

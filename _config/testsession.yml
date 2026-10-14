@@ -1,0 +1,8 @@
+---
+Name: taxonomy-testsession
+Only:
+  classexists: 'SilverStripe\TestSession\TestSessionEnvironment'
+---
+SilverStripe\TestSession\TestSessionEnvironment:
+  extensions:
+    - SilverStripe\Taxonomy\Testing\KeepTestDatabaseExtension

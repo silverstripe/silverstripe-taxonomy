@@ -1,0 +1,13 @@
+{
+    "status": 403,
+    "body": {
+        "status": "error",
+        "errors": [
+            {
+                "type": "error",
+                "code": 403,
+                "value": "You do not have permission to do this."
+            }
+        ]
+    }
+}

@@ -4,16 +4,12 @@ namespace SilverStripe\Taxonomy;
 
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FormField;
-use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\HasManyList;
-use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
-use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
-use SilverStripe\Forms\GridField\GridFieldDeleteAction;
-use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
-use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
-use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\SearchableMultiDropdownField;
+use SilverStripe\Forms\Validation\CompositeValidator;
+use SilverStripe\Forms\Validation\RequiredFieldsValidator;
 use SilverStripe\Security\Permission;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBForeignKey;
@@ -82,45 +78,25 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
-            // For now moving taxonomy terms is not supported. We also want to entirely rebuild the Children field.
+            // For now moving taxonomy terms is not supported. Children and sorting are managed through the API.
             $fields->removeByName(['ParentID', 'Sort', 'Children']);
 
             // Child taxonomy terms don't need to choose a type, it is inherited
             if ($this->config()->get('type_inheritance_enabled') && $this->getTaxonomy() !== $this) {
                 $fields->removeByName('TypeID');
             }
-
-            $childrenConfig = GridFieldConfig_RelationEditor::create();
-            $childrenGrid = GridField::create(
-                'Children',
-                $this->fieldLabel('Children'),
-                $this->Children(),
-                $childrenConfig
-            );
-            $deleteAction = $childrenConfig->getComponentByType(GridFieldDeleteAction::class);
-            $addExistingAutocompleter = $childrenConfig->getComponentByType(GridFieldAddExistingAutocompleter::class);
-            $childrenConfig->removeComponent($addExistingAutocompleter);
-            $childrenConfig->removeComponent($deleteAction);
-            $childrenConfig->addComponent(GridFieldDeleteAction::create(false));
-
-            // Setup sorting of TaxonomyTerm siblings, and fall back to a manual NumericField if no sorting is possible
-            if (class_exists(GridFieldOrderableRows::class)) {
-                $childrenConfig->addComponent(GridFieldOrderableRows::create('Sort'));
-            } elseif (class_exists(GridFieldSortableRows::class)) {
-                $childrenConfig->addComponent(GridFieldSortableRows::create('Sort'));
-            } else {
-                $fields->addFieldToTab(
-                    'Root.Main',
-                    NumericField::create('Sort', 'Sort Order')
-                        ->setDescription(
-                            'Enter a whole number to sort this term among siblings (0 is first in the list)'
-                        )
-                );
-            }
-            $fields->addFieldToTab('Root.Children', $childrenGrid);
         });
 
         return parent::getCMSFields();
+    }
+
+    public function getCMSCompositeValidator(): CompositeValidator
+    {
+        $validator = parent::getCMSCompositeValidator();
+        $requiredFields = RequiredFieldsValidator::create('Name');
+        $requiredFields->setAllowWhitespaceOnly(false);
+        $validator->addValidator($requiredFields);
+        return $validator;
     }
 
     public function scaffoldFormFieldForHasMany(
@@ -155,6 +131,16 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
             $field->setLazyLoadLimit($threshold);
         }
         return $field;
+    }
+
+    /**
+     * Gets the terms with the same parent, including this term, in the order that decides their position.
+     *
+     * @return DataList<TaxonomyTerm>
+     */
+    public function getSiblingsInOrder(): DataList
+    {
+        return TaxonomyTerm::get()->filter('ParentID', (int) $this->ParentID)->sort(['Sort' => 'ASC', 'ID' => 'ASC']);
     }
 
     /**
@@ -259,6 +245,10 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
 
     public function canView($member = null)
     {
+        $extended = $this->extendedCan(__FUNCTION__, $member);
+        if ($extended !== null) {
+            return $extended;
+        }
         return true;
     }
 
@@ -282,11 +272,19 @@ class TaxonomyTerm extends DataObject implements PermissionProvider
 
     public function canCreate($member = null, $context = array())
     {
-        $extended = $this->extendedCan(__FUNCTION__, $member);
+        $extended = $this->extendedCan(__FUNCTION__, $member, $context);
         if ($extended !== null) {
             return $extended;
         }
         return Permission::check('TAXONOMYTERM_CREATE');
+    }
+
+    /**
+     * Whether the member can add a child term below this term
+     */
+    public function canCreateChild($member = null): bool
+    {
+        return $this->canEdit($member) && TaxonomyTerm::singleton()->canCreate($member, ['Parent' => $this]);
     }
 
     public function providePermissions()

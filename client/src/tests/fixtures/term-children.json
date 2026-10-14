@@ -1,0 +1,68 @@
+{
+    "status": 200,
+    "body": {
+        "items": [
+            {
+                "ID": 3,
+                "Name": "Vegetable",
+                "ParentID": 1,
+                "Sort": 1,
+                "meta": {
+                    "className": "SilverStripe\\Taxonomy\\TaxonomyTerm",
+                    "typeName": "Biology",
+                    "ancestors": [
+                        {
+                            "ID": 1,
+                            "Name": "Plant"
+                        }
+                    ],
+                    "childCount": 1,
+                    "can": {
+                        "edit": true,
+                        "delete": true,
+                        "createChild": true
+                    }
+                },
+                "links": {
+                    "self": "admin/api/v1/taxonomy/terms/3",
+                    "children": "admin/api/v1/taxonomy/terms/3/children",
+                    "schema": "admin/api/v1/taxonomy/terms/3/schema"
+                }
+            },
+            {
+                "ID": 5,
+                "Name": "Bean",
+                "ParentID": 1,
+                "Sort": 2,
+                "meta": {
+                    "className": "SilverStripe\\Taxonomy\\TaxonomyTerm",
+                    "typeName": "Biology",
+                    "ancestors": [
+                        {
+                            "ID": 1,
+                            "Name": "Plant"
+                        }
+                    ],
+                    "childCount": 0,
+                    "can": {
+                        "edit": true,
+                        "delete": true,
+                        "createChild": true
+                    }
+                },
+                "links": {
+                    "self": "admin/api/v1/taxonomy/terms/5",
+                    "children": "admin/api/v1/taxonomy/terms/5/children",
+                    "schema": "admin/api/v1/taxonomy/terms/5/schema"
+                }
+            }
+        ],
+        "total": 2,
+        "limit": 50,
+        "offset": 0,
+        "can": {
+            "view": true,
+            "create": true
+        }
+    }
+}

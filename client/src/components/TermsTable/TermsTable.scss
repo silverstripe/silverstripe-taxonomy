@@ -1,0 +1,23 @@
+.taxonomy-table__handle {
+  width: 3rem;
+}
+
+.taxonomy-table__row--dragging {
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.taxonomy-table__drag-handle {
+  cursor: grab;
+  touch-action: none;
+}
+
+.taxonomy-table__actions {
+  text-align: right;
+  white-space: nowrap;
+
+  .btn + .btn {
+    margin-left: .25rem;
+  }
+}

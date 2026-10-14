@@ -1,0 +1,19 @@
+{
+    "status": 201,
+    "body": {
+        "ID": 2,
+        "Name": "Geology",
+        "meta": {
+            "className": "SilverStripe\\Taxonomy\\TaxonomyType",
+            "can": {
+                "edit": true,
+                "delete": true
+            }
+        },
+        "links": {
+            "self": "admin/api/v1/taxonomy/types/2",
+            "terms": "admin/api/v1/taxonomy/types/2/terms",
+            "schema": "admin/api/v1/taxonomy/types/2/schema"
+        }
+    }
+}

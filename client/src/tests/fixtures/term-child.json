@@ -1,0 +1,34 @@
+{
+    "status": 200,
+    "body": {
+        "ID": 4,
+        "Name": "Carrot",
+        "ParentID": 3,
+        "Sort": 1,
+        "meta": {
+            "className": "SilverStripe\\Taxonomy\\TaxonomyTerm",
+            "typeName": "Biology",
+            "ancestors": [
+                {
+                    "ID": 1,
+                    "Name": "Plant"
+                },
+                {
+                    "ID": 3,
+                    "Name": "Vegetable"
+                }
+            ],
+            "childCount": 0,
+            "can": {
+                "edit": true,
+                "delete": true,
+                "createChild": true
+            }
+        },
+        "links": {
+            "self": "admin/api/v1/taxonomy/terms/4",
+            "children": "admin/api/v1/taxonomy/terms/4/children",
+            "schema": "admin/api/v1/taxonomy/terms/4/schema"
+        }
+    }
+}

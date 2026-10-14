@@ -1,0 +1,13 @@
+{
+    "status": 404,
+    "body": {
+        "status": "error",
+        "errors": [
+            {
+                "type": "error",
+                "code": 404,
+                "value": "The requested resource does not exist."
+            }
+        ]
+    }
+}

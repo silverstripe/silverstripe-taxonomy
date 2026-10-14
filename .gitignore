@@ -1,1 +1,7 @@
 .DS_Store
+node_modules/
+coverage/
+/.yarn/
+*.log
+/playwright-report/
+/test-results/

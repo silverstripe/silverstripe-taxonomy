@@ -1,0 +1,60 @@
+{
+    "status": 200,
+    "body": {
+        "items": [
+            {
+                "ID": 2,
+                "Name": "Animal",
+                "TypeID": 0,
+                "ParentID": 0,
+                "Sort": 1,
+                "meta": {
+                    "className": "SilverStripe\\Taxonomy\\TaxonomyTerm",
+                    "typeName": "",
+                    "ancestors": [],
+                    "childCount": 0,
+                    "can": {
+                        "edit": false,
+                        "delete": false,
+                        "createChild": false
+                    }
+                },
+                "links": {
+                    "self": "admin/api/v1/taxonomy/terms/2",
+                    "children": "admin/api/v1/taxonomy/terms/2/children",
+                    "schema": "admin/api/v1/taxonomy/terms/2/schema"
+                }
+            },
+            {
+                "ID": 1,
+                "Name": "Plant",
+                "TypeID": 1,
+                "ParentID": 0,
+                "Sort": 2,
+                "meta": {
+                    "className": "SilverStripe\\Taxonomy\\TaxonomyTerm",
+                    "typeName": "Biology",
+                    "ancestors": [],
+                    "childCount": 2,
+                    "can": {
+                        "edit": false,
+                        "delete": false,
+                        "createChild": false
+                    }
+                },
+                "links": {
+                    "self": "admin/api/v1/taxonomy/terms/1",
+                    "children": "admin/api/v1/taxonomy/terms/1/children",
+                    "schema": "admin/api/v1/taxonomy/terms/1/schema"
+                }
+            }
+        ],
+        "total": 2,
+        "limit": 50,
+        "offset": 0,
+        "can": {
+            "view": true,
+            "create": false
+        }
+    }
+}

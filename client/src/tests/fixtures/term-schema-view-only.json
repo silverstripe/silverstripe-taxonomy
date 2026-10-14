@@ -1,0 +1,213 @@
+{
+    "status": 200,
+    "body": {
+        "id": "admin/api/v1/taxonomy/terms/1/schema",
+        "schema": {
+            "name": "TaxonomyForm",
+            "id": "Form_TaxonomyForm",
+            "action": "admin/api/v1/taxonomy/terms/1",
+            "method": "POST",
+            "attributes": {
+                "id": "Form_TaxonomyForm",
+                "action": "admin/api/v1/taxonomy/terms/1",
+                "method": "POST",
+                "enctype": "application/x-www-form-urlencoded",
+                "target": null,
+                "class": ""
+            },
+            "data": [],
+            "fields": [
+                {
+                    "name": "Root",
+                    "id": "Root",
+                    "type": "text",
+                    "schemaType": "Structural",
+                    "component": "Tabs",
+                    "holderId": "Form_TaxonomyForm_Root_Holder",
+                    "title": "Root",
+                    "source": null,
+                    "extraClass": "field CompositeField tabset field CompositeField tabset",
+                    "description": null,
+                    "rightTitle": null,
+                    "leftTitle": null,
+                    "readOnly": true,
+                    "disabled": false,
+                    "customValidationMessage": "",
+                    "validation": [],
+                    "attributes": {
+                        "class": "field CompositeField tabset field CompositeField tabset"
+                    },
+                    "autoFocus": false,
+                    "data": {
+                        "tag": "div",
+                        "legend": null,
+                        "inherited": {
+                            "data": {
+                                "fieldholder": "small"
+                            }
+                        }
+                    },
+                    "children": [
+                        {
+                            "name": "Main",
+                            "id": "Root_Main",
+                            "type": "text",
+                            "schemaType": "Structural",
+                            "component": "TabItem",
+                            "holderId": "Form_TaxonomyForm_Main_Holder",
+                            "title": "Main",
+                            "source": null,
+                            "extraClass": "",
+                            "description": null,
+                            "rightTitle": null,
+                            "leftTitle": null,
+                            "readOnly": true,
+                            "disabled": false,
+                            "customValidationMessage": "",
+                            "validation": [],
+                            "attributes": {
+                                "class": "tab "
+                            },
+                            "autoFocus": false,
+                            "data": {
+                                "tag": "div",
+                                "legend": null,
+                                "inherited": {
+                                    "data": {
+                                        "fieldholder": "small"
+                                    }
+                                }
+                            },
+                            "children": [
+                                {
+                                    "name": "Name",
+                                    "id": "Form_TaxonomyForm_Name",
+                                    "type": "text",
+                                    "schemaType": "Text",
+                                    "component": null,
+                                    "holderId": "Form_TaxonomyForm_Name_Holder",
+                                    "title": "Name",
+                                    "source": null,
+                                    "extraClass": "readonly ",
+                                    "description": null,
+                                    "rightTitle": null,
+                                    "leftTitle": null,
+                                    "readOnly": true,
+                                    "disabled": false,
+                                    "customValidationMessage": "",
+                                    "validation": {
+                                        "required": true
+                                    },
+                                    "attributes": {
+                                        "class": "readonly ",
+                                        "required": "required",
+                                        "aria-required": "true"
+                                    },
+                                    "autoFocus": false,
+                                    "data": []
+                                },
+                                {
+                                    "name": "TypeID",
+                                    "id": "Form_TaxonomyForm_TypeID",
+                                    "type": "text",
+                                    "schemaType": "MultiSelect",
+                                    "component": "LookupField",
+                                    "holderId": "Form_TaxonomyForm_TypeID_Holder",
+                                    "title": "Type",
+                                    "source": null,
+                                    "extraClass": "lookup readonly ss-searchable-dropdown-field",
+                                    "description": null,
+                                    "rightTitle": null,
+                                    "leftTitle": null,
+                                    "readOnly": true,
+                                    "disabled": false,
+                                    "customValidationMessage": "",
+                                    "validation": [],
+                                    "attributes": {
+                                        "class": "lookup readonly ss-searchable-dropdown-field"
+                                    },
+                                    "autoFocus": false,
+                                    "data": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "SecurityID",
+                    "id": "Form_TaxonomyForm_SecurityID",
+                    "type": "hidden",
+                    "schemaType": "Hidden",
+                    "component": null,
+                    "holderId": "Form_TaxonomyForm_SecurityID_Holder",
+                    "title": "Security ID",
+                    "source": null,
+                    "extraClass": "hidden",
+                    "description": null,
+                    "rightTitle": null,
+                    "leftTitle": null,
+                    "readOnly": true,
+                    "disabled": false,
+                    "customValidationMessage": "",
+                    "validation": [],
+                    "attributes": {
+                        "class": "hidden"
+                    },
+                    "autoFocus": false,
+                    "data": []
+                }
+            ],
+            "actions": []
+        },
+        "state": {
+            "id": "Form_TaxonomyForm",
+            "fields": [
+                {
+                    "name": "Root",
+                    "id": "Root",
+                    "value": null,
+                    "message": null,
+                    "data": [],
+                    "hideNav": false
+                },
+                {
+                    "name": "Main",
+                    "id": "Root_Main",
+                    "value": null,
+                    "message": null,
+                    "data": []
+                },
+                {
+                    "name": "Name",
+                    "id": "Form_TaxonomyForm_Name",
+                    "value": "Plant",
+                    "message": null,
+                    "data": []
+                },
+                {
+                    "name": "TypeID",
+                    "id": "Form_TaxonomyForm_TypeID",
+                    "value": 1,
+                    "message": null,
+                    "data": [],
+                    "source": [
+                        {
+                            "value": 1,
+                            "title": "Biology",
+                            "disabled": false
+                        }
+                    ]
+                },
+                {
+                    "name": "SecurityID",
+                    "id": "Form_TaxonomyForm_SecurityID",
+                    "value": "SECURITY_ID",
+                    "message": null,
+                    "data": []
+                }
+            ],
+            "messages": [],
+            "notifyUnsavedChanges": false
+        }
+    }
+}
