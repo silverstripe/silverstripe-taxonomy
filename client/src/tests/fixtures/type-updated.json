@@ -1,0 +1,19 @@
+{
+    "status": 200,
+    "body": {
+        "ID": 1,
+        "Name": "Science",
+        "meta": {
+            "className": "SilverStripe\\Taxonomy\\TaxonomyType",
+            "can": {
+                "edit": true,
+                "delete": true
+            }
+        },
+        "links": {
+            "self": "admin/api/v1/taxonomy/types/1",
+            "terms": "admin/api/v1/taxonomy/types/1/terms",
+            "schema": "admin/api/v1/taxonomy/types/1/schema"
+        }
+    }
+}

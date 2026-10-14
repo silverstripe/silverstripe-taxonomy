@@ -1,0 +1,26 @@
+{
+    "status": 200,
+    "body": {
+        "ID": 1,
+        "Name": "Plant",
+        "TypeID": 1,
+        "ParentID": 0,
+        "Sort": 2,
+        "meta": {
+            "className": "SilverStripe\\Taxonomy\\TaxonomyTerm",
+            "typeName": "Biology",
+            "ancestors": [],
+            "childCount": 2,
+            "can": {
+                "edit": false,
+                "delete": false,
+                "createChild": false
+            }
+        },
+        "links": {
+            "self": "admin/api/v1/taxonomy/terms/1",
+            "children": "admin/api/v1/taxonomy/terms/1/children",
+            "schema": "admin/api/v1/taxonomy/terms/1/schema"
+        }
+    }
+}

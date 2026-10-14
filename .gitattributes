@@ -5,3 +5,18 @@
 /.travis.yml export-ignore
 /.scrutinizer.yml export-ignore
 /codecov.yml export-ignore
+/client/src export-ignore
+/webpack.config.js export-ignore
+/babel.config.json export-ignore
+/package.json export-ignore
+/.eslintignore export-ignore
+/.eslintrc.js export-ignore
+/.stylelintignore export-ignore
+/.stylelintrc.js export-ignore
+/.yarnrc.yml export-ignore
+/.nvmrc export-ignore
+/yarn.lock export-ignore
+
+# Hide diffs
+/client/dist/js -diff
+/client/dist/styles -diff

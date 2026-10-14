@@ -1,0 +1,28 @@
+.taxonomy-terms {
+  height: 100%;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.taxonomy-terms__header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.taxonomy-terms__title {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.taxonomy-search {
+  align-items: center;
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+.taxonomy-search__input {
+  max-width: 20rem;
+}

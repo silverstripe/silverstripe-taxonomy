@@ -1,4 +1,24 @@
 en:
+  SilverStripe\Taxonomy\Api\RecordWriter:
+    FIELD_NOT_SCALAR: 'The "{field}" field needs a single value.'
+    FIELD_NOT_WRITABLE: 'The "{field}" field does not exist or cannot be changed.'
+    INVALID: 'The data is not valid.'
+  SilverStripe\Taxonomy\Api\ServedFormFactory:
+    SAVE: Save
+  SilverStripe\Taxonomy\Api\TaxonomyApiController:
+    ERROR_400: 'The request is not valid.'
+    ERROR_401: 'You must log in to use this API.'
+    ERROR_403: 'You do not have permission to do this.'
+    ERROR_404: 'The requested resource does not exist.'
+    ERROR_415: 'The request must have the content type "application/json".'
+    ERROR_500: 'The server could not process the request.'
+    INVALID_JSON: 'The request body is not valid JSON.'
+    INVALID_PAGE_PARAMETER: 'The "{name}" parameter must be a whole number from {minimum} to {maximum}.'
+    INVALID_PARENT_ID: 'The "parentID" parameter must be a positive whole number.'
+    INVALID_POSITION: 'The "Sort" field must be a whole number from 1 to {count}.'
+    INVALID_SEARCH: 'The "q" parameter must be a string.'
+    INVALID_TOKEN: 'The CSRF token is missing or not valid.'
+    JSON_NOT_OBJECT: 'The request body must be a JSON object.'
   SilverStripe\Taxonomy\TaxonomyAdmin:
     MENUTITLE: Taxonomies
   SilverStripe\Taxonomy\TaxonomyTerm:

@@ -1,0 +1,22 @@
+{
+    "status": 200,
+    "body": {
+        "securityID": "SECURITY_ID",
+        "collections": {
+            "terms": {
+                "link": "admin/api/v1/taxonomy/terms",
+                "can": {
+                    "view": true,
+                    "create": true
+                }
+            },
+            "types": {
+                "link": "admin/api/v1/taxonomy/types",
+                "can": {
+                    "view": true,
+                    "create": true
+                }
+            }
+        }
+    }
+}

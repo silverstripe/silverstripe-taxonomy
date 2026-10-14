@@ -1,0 +1,30 @@
+{
+    "status": 200,
+    "body": {
+        "items": [
+            {
+                "ID": 1,
+                "Name": "Biology",
+                "meta": {
+                    "className": "SilverStripe\\Taxonomy\\TaxonomyType",
+                    "can": {
+                        "edit": true,
+                        "delete": true
+                    }
+                },
+                "links": {
+                    "self": "admin/api/v1/taxonomy/types/1",
+                    "terms": "admin/api/v1/taxonomy/types/1/terms",
+                    "schema": "admin/api/v1/taxonomy/types/1/schema"
+                }
+            }
+        ],
+        "total": 1,
+        "limit": 50,
+        "offset": 0,
+        "can": {
+            "view": true,
+            "create": true
+        }
+    }
+}

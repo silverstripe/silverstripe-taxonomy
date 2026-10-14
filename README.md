@@ -9,13 +9,17 @@ The Taxonomy module add the capability to add and edit simple taxonomies within 
 
 ## Features
 
-Create multiple taxonomies with any number of nested terms.
+Create multiple taxonomies with any number of nested terms. The "Taxonomies" section of the CMS is a React screen that only uses a JSON API at `/admin/api/v1/taxonomy`.
 
 ## Installation
 
 ```sh
 composer require silverstripe/taxonomy
 ```
+
+## Documentation
+
+See [docs/en/](docs/en/index.md) for the developer documentation, including the [API reference with curl examples](docs/en/02_api.md) and how to [run the tests](docs/en/03_testing.md).
 
 ## Contributing
 

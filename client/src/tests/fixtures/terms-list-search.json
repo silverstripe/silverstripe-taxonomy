@@ -1,0 +1,37 @@
+{
+    "status": 200,
+    "body": {
+        "items": [
+            {
+                "ID": 1,
+                "Name": "Plant",
+                "TypeID": 1,
+                "ParentID": 0,
+                "Sort": 2,
+                "meta": {
+                    "className": "SilverStripe\\Taxonomy\\TaxonomyTerm",
+                    "typeName": "Biology",
+                    "ancestors": [],
+                    "childCount": 2,
+                    "can": {
+                        "edit": true,
+                        "delete": true,
+                        "createChild": true
+                    }
+                },
+                "links": {
+                    "self": "admin/api/v1/taxonomy/terms/1",
+                    "children": "admin/api/v1/taxonomy/terms/1/children",
+                    "schema": "admin/api/v1/taxonomy/terms/1/schema"
+                }
+            }
+        ],
+        "total": 1,
+        "limit": 50,
+        "offset": 0,
+        "can": {
+            "view": true,
+            "create": true
+        }
+    }
+}

@@ -1,0 +1,47 @@
+SilverStripe\Security\Permission:
+  admin:
+    Code: ADMIN
+  taxonomyAccess:
+    Code: 'CMS_ACCESS_SilverStripe\Taxonomy\TaxonomyAdmin'
+  termCreate:
+    Code: TAXONOMYTERM_CREATE
+  termEdit:
+    Code: TAXONOMYTERM_EDIT
+  termDelete:
+    Code: TAXONOMYTERM_DELETE
+SilverStripe\Security\Group:
+  administrators:
+    Title: Administrators
+    Code: administrators
+    Permissions: =>SilverStripe\Security\Permission.admin
+  editors:
+    Title: Taxonomy editors
+    Code: taxonomy-editors
+    Permissions:
+      - =>SilverStripe\Security\Permission.taxonomyAccess
+      - =>SilverStripe\Security\Permission.termCreate
+      - =>SilverStripe\Security\Permission.termEdit
+      - =>SilverStripe\Security\Permission.termDelete
+SilverStripe\Security\Member:
+  admin:
+    FirstName: Ada
+    Surname: Admin
+    Email: admin@example.com
+    Password: Taxonomy-e2e-1!
+    Groups: =>SilverStripe\Security\Group.administrators
+  editor:
+    FirstName: Eddie
+    Surname: Editor
+    Email: editor@example.com
+    Password: Taxonomy-e2e-1!
+    Groups: =>SilverStripe\Security\Group.editors
+SilverStripe\Taxonomy\TaxonomyTerm:
+  alpha:
+    Name: Alpha
+    Sort: 1
+  beta:
+    Name: Beta
+    Sort: 2
+  gamma:
+    Name: Gamma
+    Sort: 3

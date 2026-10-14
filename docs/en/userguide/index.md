@@ -8,8 +8,10 @@ summary: Add and edit simple taxonomies in the CMS.
 ## In this section
 
 - Taxonomy usage
-- Taxonomy terms and types
-- Taxonomy creation and removal
+- Terms and types
+- Creating a taxonomy
+- Reordering terms
+- Removing terms and types
 - Permissions
 
 ## Before we begin
@@ -18,39 +20,57 @@ summary: Add and edit simple taxonomies in the CMS.
 
 ## Taxonomy usage
 
-This module provides a raw skeleton for maintaining taxonomies in the CMS. Taxonomies are used to group content, making it easy to find related pieces of information. By default, the module provides the interface described below to create and manage taxonomies, using Taxonomy Terms and Taxonomy Types.
+This module provides a raw skeleton for maintaining taxonomies in the CMS. Taxonomies are used to group content, making it easy to find related pieces of information. By default, the module provides the screens described below to create and manage taxonomies, using terms and types.
 
-### Taxonomy terms and types
+### Terms and types
 
-The Taxonomy Term is the equivalent of the taxonomy itself - it serves to provide it's name, and as a holder of all the taxonomy's types. For example, a taxonomy term called 'News' could have multiple taxonomy types such as 'National', 'International', and 'Sport'. These help make your content easier to find by refining the focus.
+A term is one entry in a taxonomy. Terms form a tree. A term at the top of the tree is the root of a taxonomy, and it can have any number of child terms, which can have child terms of their own. For example, a term called "News" could have the child terms "National", "International" and "Sport".
 
-### Taxonomy creation
+A type is a label for a whole taxonomy, for example "Content category". The type of a top-level term applies to all the terms below it, so child terms have no type field of their own.
 
-To create a taxonomy, navigate to the "Taxonomies" section.
+The "Taxonomies" section has two tabs, "Terms" and "Types". You only see the tabs that you have access to. Only administrators can add, change or delete types.
 
-The list that appears contains all existing taxonomies - there could be many in parallel. If the list is empty, you will want to create a Taxonomy Type first. To do so, navigate to the "Taxonomy Types" tab, click "Add new Taxonomy Type", specify the name (e.g. "News") and click "Create".
+### Creating a taxonomy
 
-To create first layer of terms within the taxonomy, switch to the "Taxonomy Terms" tab. Click "Add new Taxonomy Term" and this time create "National". Switch to the "Children" tab, and nest another term underneath: (e.g. "Weather"). You have just
-created a three-level hierarchy of "News > National > Weather".
+1. Go to the "Taxonomies" section.
+1. If you want to give the taxonomy a type, select the "Types" tab, select "Add type", enter a name and select "Save". An administrator must do this step.
+1. Select the "Terms" tab, then select "Add term". Enter the name, choose a type if you want one, and select "Save". The new term opens for editing.
+1. Select "Add child term" below the form to add a term inside the one that you are editing. For example, add "National" to "News". Open "National" and add "Weather" to it. You have now created a three-level tree, "News > National > Weather".
 
-![Example of taxonomy](_images/taxonomies-terms.jpg)
+The breadcrumbs at the top of the screen show where a term sits in the tree. Select a part of the trail to go to that term, or select "Taxonomy terms" to go back to the list.
 
-You can easily navigate around the hierarchy by using breadcrumbs at the top as you would with other areas in
-Silverstripe CMS.
+To find a top-level term, type part of its name into the search box above the list. The list shows 50 terms at a time, and has links to the other pages.
 
-### Taxonomy removal
+### Reordering terms
 
-The taxonomies can be recursively removed. To remove an entire taxonomy, you can click the button "More options" which is shown as an ellipses icon and choose "Delete". All terms belonging to it will be removed.
+Terms appear in the order you give them. There are three ways to move a term among the terms at the same level:
 
-You can also remove parts of the taxonomy tree - just descend into the children terms, and use the "More options" button next to
-the top-level item of the subtree to be removed.
+- Drag the row by its handle.
+- Focus the handle with the keyboard, press the space bar or enter to pick the row up, use the up and down arrow keys to move it, and press the space bar or enter to drop it. Press escape to cancel.
+- Select "Move up" or "Move down" in the row.
+
+The new order is saved at once. If the CMS cannot save it, the list goes back to the old order and shows an error message. You cannot reorder the top-level list while a search is filtering it.
+
+You cannot move a term to a different parent. Create the term in the right place instead.
+
+### Removing terms and types
+
+To remove a term, select "Delete" in the list or on the edit screen, and confirm. This also removes all the terms nested under it, so the confirmation message says so when the term has children. You cannot undo a deletion.
+
+To remove a type, open the "Types" tab and use "Delete" in the same way.
+
+### What the section no longer offers
+
+Earlier versions of the module offered CSV import, CSV export, printing, previous and next record links, and search filters other than the name. The screen no longer has them.
 
 ## Permissions
 
 ![New group permissions](_images/taxonomies-permissions.jpg)
 
-Site administrator can specify permissions around taxonomies. There are three permissions that can be set on groups:
+Site administrator can specify permissions around taxonomies. A group needs access to the "Taxonomies" section to see the screen. There are three more permissions that can be set on groups:
 
 - "Create a taxonomy term": allows adding new terms to existing taxonomies.
 - "Delete a taxonomy term and all nested terms": allows to delete items recursively.
 - "Edit a taxonomy term": allows members of the group to update the taxonomy details.
+
+Members with access to the section can see all the types, but only administrators can change them.

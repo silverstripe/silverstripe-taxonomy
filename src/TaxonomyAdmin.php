@@ -2,58 +2,92 @@
 
 namespace SilverStripe\Taxonomy;
 
-use SilverStripe\Admin\ModelAdmin;
-use SilverStripe\Forms\GridField\GridField;
-use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
-use SilverStripe\Model\List\SS_List;
-use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
+use SilverStripe\Admin\LeftAndMain;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Taxonomy\Api\TaxonomyApiController;
+use SilverStripe\View\Requirements;
 
 /**
-* Management interface for Taxonomies, TaxonomyTerms and TaxonomyTypes
-*
-* @package taxonomy
-*/
-class TaxonomyAdmin extends ModelAdmin
+ * Management interface for taxonomy terms and types. The screen is a React app that only uses the API of
+ * TaxonomyApiController.
+ *
+ * Only the client routes in url_handlers exist. Any other URL returns a 404.
+ */
+class TaxonomyAdmin extends LeftAndMain
 {
-    private static $url_segment = 'taxonomy';
+    private const ROUTE_NEW = 'new';
 
-    private static $managed_models = array(TaxonomyTerm::class, TaxonomyType::class);
+    private static $url_segment = 'taxonomy';
 
     private static $menu_title = 'Taxonomies';
 
     private static $menu_icon_class = 'font-icon-tags';
-    /**
-     * If terms are the models being managed, filter for only top-level terms - no children
-     *
-     * @return SS_List
-     */
-    public function getList()
+
+    // The more specific routes must come first, because a route also matches longer URLs
+    private static array $url_handlers = [
+        'terms/new' => 'index',
+        'terms/$ID!' => 'index',
+        'terms' => 'index',
+        'types/new' => 'index',
+        'types/$ID!' => 'index',
+        'types' => 'index',
+    ];
+
+    private static $allowed_actions = [
+        'respondNotFound',
+    ];
+
+    public function getClientConfig(): array
     {
-        if ($this->modelClass === TaxonomyTerm::class) {
-            $list = parent::getList();
-            return $list->filter('ParentID', '0');
-        }
-        return parent::getList();
+        return array_merge(parent::getClientConfig(), [
+            'reactRouter' => true,
+            'apiUrl' => rtrim(TaxonomyApiController::singleton()->Link(), '/'),
+        ]);
     }
 
-    public function getEditForm($id = null, $fields = null)
+    public function index(HTTPRequest $request): HTTPResponse
     {
-        if ($this->modelClass !== TaxonomyTerm::class) {
-            return parent::getEditForm($id, $fields);
+        $id = $request->param('ID');
+        if ($id !== null && $id !== TaxonomyAdmin::ROUTE_NEW && !preg_match('/^[1-9][0-9]*$/', $id)) {
+            $this->httpError(404);
         }
+        return parent::index($request);
+    }
 
-        $form = parent::getEditForm($id, $fields);
+    public function respondNotFound(): never
+    {
+        $this->httpError(404);
+    }
 
-        /** @var GridField $gf */
-        $gf = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass));
+    protected function init()
+    {
+        parent::init();
+        Requirements::add_i18n_javascript('silverstripe/taxonomy: client/lang', false);
+        Requirements::javascript('silverstripe/taxonomy: client/dist/js/bundle.js');
+        Requirements::css('silverstripe/taxonomy: client/dist/styles/bundle.css');
+    }
 
-        // Setup sorting of TaxonomyTerm siblings, if a suitable module is included
-        if (class_exists(GridFieldOrderableRows::class)) {
-            $gf->getConfig()->addComponent(GridFieldOrderableRows::create('Sort'));
-        } elseif (class_exists(GridFieldSortableRows::class)) {
-            $gf->getConfig()->addComponent(new GridFieldSortableRows('Sort'));
+    // Replaces the inherited generic routes, so a URL cannot reach an inherited action by name
+    protected function findAction($request)
+    {
+        if ($request->remaining() === '') {
+            return ['rule' => '/', 'action' => 'index'];
         }
+        foreach (TaxonomyAdmin::config()->uninherited('url_handlers') as $rule => $action) {
+            if ($request->match($rule, true)) {
+                return ['rule' => $rule, 'action' => $action];
+            }
+        }
+        return ['rule' => '*', 'action' => 'respondNotFound'];
+    }
 
-        return $form;
+    protected function handleAction($request, $action)
+    {
+        // A route also matches longer URLs, e.g. "terms/12/unknown" matches "terms/$ID!"
+        if (!$request->allParsed() && $action !== 'respondNotFound') {
+            $this->httpError(404);
+        }
+        return parent::handleAction($request, $action);
     }
 }
